@@ -105,7 +105,21 @@
                 padding: 1rem;
             }
         }
-    </style>
+    
+  .topbar a.cv-btn {
+    border: 1px solid #d4af37;
+    border-radius: 8px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: box-shadow .2s ease, background-color .2s ease;
+  }
+  .topbar a.cv-btn:hover {
+    box-shadow: 0 0 10px rgba(212,175,55,.35);
+    background-color: rgba(212,175,55,.08);
+  }
+</style>
 </head>
 <body>
 
@@ -125,6 +139,13 @@
               padding: 0 16px; display:flex; align-items:center; justify-content:flex-end;
               gap:18px; font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
               font-size: 0.95rem; color:#f2e6c5;">
+
+    <!-- CV (opens in new tab) -->
+    <a class="cv-btn" href="William%20de%20Try%20CV.pdf" target="_blank" rel="noopener"
+       title="View my CV (opens in new tab)">
+      <span style="font-size:1.1rem;">📄</span>
+      <span style="position:absolute;left:-9999px;">CV</span>
+    </a>
 
     <!-- LinkedIn (inline SVG, cannot break) -->
     <a href="https://www.linkedin.com/in/william-de-try-726470247" target="_blank" rel="noopener"
