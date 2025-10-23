@@ -108,6 +108,54 @@
     </style>
 </head>
 <body>
+
+<style>
+  :root { --topbar-h: 56px; }
+  body { padding-top: var(--topbar-h); }
+  .topbar a { text-decoration: none; color: inherit; }
+  .topbar a:hover { opacity: 0.85; }
+</style>
+
+
+<header class="topbar"
+  style="position:fixed; inset-inline:0; top:0; height:var(--topbar-h);
+         background: rgba(20,20,20,0.92); backdrop-filter: saturate(120%) blur(6px);
+         border-bottom: 1px solid #333; z-index:9999;">
+  <div style="max-width:1000px; margin:0 auto; height:100%;
+              padding: 0 16px; display:flex; align-items:center; justify-content:flex-end;
+              gap:18px; font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+              font-size: 0.95rem; color:#f2e6c5;">
+
+    <!-- LinkedIn (inline SVG, cannot break) -->
+    <a href="https://www.linkedin.com/in/william-de-try-726470247" target="_blank" rel="noopener"
+       style="display:flex; align-items:center; gap:8px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"
+           style="border-radius:3px; display:block;">
+        <rect x="0" y="0" width="24" height="24" rx="4" ry="4" fill="#0A66C2"/>
+        <text x="7.5" y="17" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif"
+              font-size="13" font-weight="700">in</text>
+      </svg>
+      <span>LinkedIn</span>
+    </a>
+
+    <!-- Email (inline SVG) -->
+    <a href="mailto:william.detry@hotmail.se" style="display:flex; align-items:center; gap:8px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F2C94C" aria-hidden="true" focusable="false">
+        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.236-7.428 4.57a2 2 0 0 1-2.144 0L3 8.236V6l8.2 5.045a1 1 0 0 0 1.07 0L21 6v2.236Z"/>
+      </svg>
+      <span>william.detry@hotmail.se</span>
+    </a>
+
+    <!-- Itch.io (CDN logo, brand color) -->
+    <a href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener"
+       style="display:flex; align-items:center; gap:8px;">
+      <img src="https://cdn.simpleicons.org/itchdotio/FA5C5C" alt="Itch.io" width="18" height="18" style="display:block;">
+      <span>Itch.io</span>
+    </a>
+  </div>
+</header>
+
+
     <header>
         <h1>William de Try</h1>
         <p class="subtitle">Game Developer | Graphics & Rendering Enthusiast</p>
