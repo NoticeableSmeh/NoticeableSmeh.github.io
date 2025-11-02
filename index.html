@@ -6,33 +6,54 @@
   <title>William de Try - Game Developer Portfolio</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root { --gold: #d4af37; --ink: #1c1b1a; --paper: #eae6e1; --panel: #2a2928; --topbar-h: 60px; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.6; color: var(--paper); background-color: var(--ink); max-width: 1200px; margin: 0 auto; padding: 20px; padding-top: calc(var(--topbar-h) + 20px); }
+    :root { --gold: #d4af37; --ink: #1c1b1a; --paper: #eae6e1; --panel: #2a2928; --topbar-h: 52px; }
 
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.6; color: var(--paper); background-color: var(--ink); max-width: 1200px; margin: 0 auto; padding: 16px; padding-top: calc(var(--topbar-h) + 14px); }
+
+    /* Topbar: scrollable on mobile, centered on desktop */
     .topbar { position: fixed; inset-inline: 0; top: 0; height: var(--topbar-h); background: rgba(20,20,20,.92); backdrop-filter: saturate(120%) blur(6px); border-bottom: 1px solid #333; z-index: 9999; }
-    .topbar-inner { max-width: 850px; margin: 0 auto; height: 100%; padding: 0 16px; display: flex; align-items: center; justify-content: center; gap: 18px; color: #f2e6c5; font-size: .95rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .topbar-inner {
+      max-width: 900px; margin: 0 auto; height: 100%; padding: 0 12px;
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      color: #f2e6c5; font-size: .95rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    }
     .topbar-inner::-webkit-scrollbar { display: none; }
     .topbar a { text-decoration: none; color: inherit; display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto; }
     .topbar a:hover { opacity: .85; }
-    .cv-btn { border: 1px solid var(--gold); border-radius: 10px; padding: 8px 14px; gap: 10px; transition: box-shadow .2s ease, background-color .2s ease, transform .05s ease; color: #f2e6c5; font-weight: 700; font-size: 1rem; letter-spacing: .2px; }
+    .cv-btn { border: 1px solid var(--gold); border-radius: 10px; padding: 6px 12px; gap: 10px; transition: box-shadow .2s ease, background-color .2s ease, transform .05s ease; color: #f2e6c5; font-weight: 700; font-size: .95rem; letter-spacing: .2px; }
     .cv-btn:hover { box-shadow: 0 0 12px rgba(212,175,55,.4); background-color: rgba(212,175,55,.10); }
 
-    header.page-header { padding: 14px 0; border-bottom: 1px solid var(--gold); margin-bottom: 18px; }
-    .page-header-inner { max-width: 900px; margin: 0 auto; display: grid; place-items: center; gap: 12px; padding: 0 6px; text-align: center; }
-    .avatar { width: 72px; height: 72px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; box-shadow: 0 0 0 3px rgba(212,175,55,.08); }
-    .identity { display: grid; gap: 2px; }
-    h1 { font-size: 1.9rem; color: #fff; line-height: 1.15; }
-    .subtitle { font-size: 1.05rem; color: var(--gold); }
-    .location { color: var(--gold); font-size: .95rem; }
+    /* Condensed hero */
+    header.page-header { padding: 8px 0; border-bottom: 1px solid var(--gold); margin-bottom: 10px; }
+    .page-header-inner { max-width: 900px; margin: 0 auto; display: grid; place-items: center; gap: 8px; padding: 0 6px; text-align: center; }
+    .avatar { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; box-shadow: 0 0 0 3px rgba(212,175,55,.08); }
+    h1 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); color: #fff; line-height: 1.2; }
 
-    h2 { font-size: 1.6rem; color: #fff; margin: 1.5rem 0 .75rem; border-bottom: 1px solid var(--gold); padding-bottom: .4rem; }
-    .project-title { font-size: 1.3rem; color: var(--gold); margin: 0 0 .5rem 0; line-height: 1.3; }
+    /* Meta row with unified, fixed-height, high-contrast pills */
+    .meta { display: flex; flex-wrap: wrap; gap: .5rem .55rem; align-items: center; justify-content: center; font-size: .95rem; }
+    .badge {
+      --h: 32px;
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: 0 12px; min-height: var(--h);
+      border-radius: 999px; font-weight: 800;
+      background: #0e0e0e; color: var(--gold); border: 1px solid var(--gold);
+      line-height: 1; white-space: nowrap;
+    }
+    /* square emoji box so the icon never hugs the bottom */
+    .glyph { width: 1.2em; height: 1.2em; display: grid; place-items: center; line-height: 1; }
+    .glyph > span { font-size: 1em; line-height: 1; }
 
-    .projects { display: grid; grid-template-columns: 1fr; gap: 1.1rem; }
+    .badge:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+    /* Sections */
+    h2 { font-size: 1.5rem; color: #fff; margin: 1.2rem 0 .7rem; border-bottom: 1px solid var(--gold); padding-bottom: .35rem; }
+    .project-title { font-size: 1.2rem; color: var(--gold); margin: 0 0 .45rem 0; line-height: 1.3; }
+
+    .projects { display: grid; grid-template-columns: 1fr; gap: 1rem; }
     @media (min-width: 720px) { .projects { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 1024px) { .projects { grid-template-columns: 1fr 1fr; gap: 1.3rem; } }
+    @media (min-width: 1024px) { .projects { grid-template-columns: 1fr 1fr; gap: 1.2rem; } }
 
-    .project { background: var(--panel); padding: 1rem; border-radius: 10px; border-left: 4px solid var(--gold); display: flex; flex-direction: column; gap: .6rem; }
+    .project { background: var(--panel); padding: .9rem; border-radius: 10px; border-left: 4px solid var(--gold); display: flex; flex-direction: column; gap: .55rem; }
     .project a.inline-link { color: var(--gold); font-weight: 700; text-decoration: none; }
     .project a.inline-link:hover { text-decoration: underline; }
     .project a.card-link { display: inline-flex; align-items: baseline; gap: .5rem; color: inherit; text-decoration: none; }
@@ -50,24 +71,23 @@
     }
     .project .thumb-link:hover::after, .project .thumb-link:focus-visible::after { opacity: 1; }
 
-    .project p { margin-bottom: .2rem; }
-
-    .cta-row { margin-top: .2rem; }
-    .devlog-cta { display: inline-block; padding: 8px 12px; border: 1px solid var(--gold); border-radius: 8px; font-weight: 700; text-decoration: none; color: var(--gold); }
+    .project p { margin-bottom: .18rem; }
+    .cta-row { margin-top: .15rem; }
+    .devlog-cta { display: inline-block; padding: 7px 11px; border: 1px solid var(--gold); border-radius: 8px; font-weight: 700; text-decoration: none; color: var(--gold); }
     .devlog-cta:hover { box-shadow: 0 0 8px rgba(212,175,55,.35); }
 
-    .contact-info { background: var(--panel); padding: 1rem; border-radius: 10px; margin: 1.6rem 0; }
+    .contact-info { background: var(--panel); padding: .9rem; border-radius: 10px; margin: 1.4rem 0; }
     a { color: var(--gold); font-weight: 700; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     .skip { position: absolute; left: -9999px; top: -9999px; }
     .skip:focus { left: 12px; top: calc(var(--topbar-h) + 12px); background: #000; color: #fff; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--gold); z-index: 10000; }
 
-    @media (max-width: 768px) {
-      .avatar { width: 60px; height: 60px; }
-      h1 { font-size: 1.6rem; }
-      .subtitle { font-size: .95rem; }
-      .location { font-size: .9rem; }
+    /* Mobile tweaks */
+    @media (max-width: 640px) {
+      .avatar { width: 48px; height: 48px; }
+      .meta { font-size: .92rem; gap: .45rem .5rem; }
+      .badge { --h: 30px; padding: 0 10px; }
     }
   </style>
 </head>
@@ -95,11 +115,12 @@
   <header class="page-header">
     <div class="page-header-inner">
       <img class="avatar" src="assets/images/headshot.jpg" alt="Portrait of William de Try" loading="lazy" decoding="async"/>
-      <div class="identity">
-        <h1>William de Try</h1>
-        <p class="subtitle">Game Developer | Graphics & Rendering Enthusiast</p>
-        <p class="location">Location: Stockholm, Sweden</p>
-      </div>
+      <h1>William de Try</h1>
+      <p class="meta">
+        <span class="badge" aria-label="Location"><span class="glyph"><span role="img" aria-hidden="true">📍</span></span> Stockholm, Sweden</span>
+        <span class="badge" aria-label="Role"><span class="glyph"><span role="img" aria-hidden="true">🎮</span></span> Game Developer</span>
+        <span class="badge" aria-label="Specialty"><span class="glyph"><span role="img" aria-hidden="true">📐</span></span> Graphics &amp; Rendering</span>
+      </p>
     </div>
   </header>
 
@@ -109,7 +130,7 @@
         <a class="card-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener" aria-label="Open Learning OpenGL devlog">
           <h3 class="project-title">Learning OpenGL | Devlog Series</h3>
         </a>
-        <p>Structured deep dive into modern OpenGL. Implemented context setup, shader compilation and linking, vertex buffers with indexed meshes, texture sampling, camera movement with GLM transforms, Phong lighting, material handling, multiple light types, and Assimp model loading. Focused on building a strong technical foundation for graphics and rendering.</p>
+        <p>Structured deep dive into modern OpenGL. Implemented context setup, shader compilation and linking, vertex buffers with indexed meshes, texture sampling, camera movement with GLM transforms, Phong lighting, material handling, multiple light types, and Assimp model loading. Focused on a strong graphics foundation.</p>
         <p><strong>Want the how?</strong> Read the devlog for design choices, breakdowns, and code details.</p>
         <a class="thumb-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener" aria-label="Open Learning OpenGL devlog" data-overlay="Read Devlog">
           <img src="assets/images/image1.jpg" alt="OpenGL rendering with textured cubes and lighting" />
@@ -123,7 +144,7 @@
         <a class="card-link" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener" aria-label="Open Rasterizer devlog">
           <h3 class="project-title">CPU Rasterizer | From Pixels to Triangles</h3>
         </a>
-        <p><em>Work in progress</em>. Building a software rasterizer in C++ on the CPU using SDL2 and stb_image. Part 1 sets up the framebuffer and image dumps, Part 2 draws lines and trims branches toward a Bresenham variant, Part 3 adds a clear geometry header with vec2 and vec3 operations for wireframe and triangle fill.</p>
+        <p><em>Work in progress</em>. Software rasterizer in C++ on the CPU using SDL2 and stb_image. Part 1 sets up the framebuffer and image dumps, Part 2 draws lines and trims branches toward a Bresenham variant, Part 3 adds a clean geometry header with vec2 and vec3 operations for wireframe and triangle fill.</p>
         <p><strong>Want the how?</strong> Devlog covers design choices, math, and code.</p>
         <a class="thumb-link" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener" aria-label="Open Rasterizer devlog" data-overlay="Read Devlog">
           <img src="assets/images/image6.png" alt="Rasterizer project banner" />
