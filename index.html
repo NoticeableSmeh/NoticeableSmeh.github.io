@@ -36,10 +36,24 @@
     .project a.inline-link:hover { text-decoration: underline; }
     .project a.card-link { display: inline-flex; align-items: baseline; gap: .5rem; color: inherit; text-decoration: none; }
     .project a.card-link:hover .project-title { text-decoration: underline; }
-    .project .thumb-link { display: block; border-radius: 6px; overflow: hidden; border: 2px solid #444; }
+
+    .project .thumb-link { display: block; border-radius: 6px; overflow: hidden; border: 2px solid #444; position: relative; }
     .project .thumb-link img { width: 100%; height: auto; display: block; }
-    .project .thumb-link:focus-visible, .project a.card-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+    .project .thumb-link[data-overlay]::after {
+      content: attr(data-overlay);
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,.45);
+      color: #fff; font-weight: 800; letter-spacing: .3px;
+      opacity: 0; transition: opacity .2s ease;
+    }
+    .project .thumb-link:hover::after, .project .thumb-link:focus-visible::after { opacity: 1; }
+
     .project p { margin-bottom: .2rem; }
+
+    .cta-row { margin-top: .2rem; }
+    .devlog-cta { display: inline-block; padding: 8px 12px; border: 1px solid var(--gold); border-radius: 8px; font-weight: 700; text-decoration: none; color: var(--gold); }
+    .devlog-cta:hover { box-shadow: 0 0 8px rgba(212,175,55,.35); }
 
     .contact-info { background: var(--panel); padding: 1rem; border-radius: 10px; margin: 1.6rem 0; }
     a { color: var(--gold); font-weight: 700; text-decoration: none; }
@@ -91,58 +105,82 @@
 
   <main>
     <section id="projects" class="projects" aria-label="Projects">
+      <!-- Learning OpenGL -->
       <article class="project">
-        <a class="card-link" href="https://dev.to/noticeablesmeh" target="_blank" rel="noopener" aria-label="Open LearnOpenGL devlog series on dev.to">
-          <h3 class="project-title">Learning OpenGL | Tutorial Series</h3>
+        <a class="card-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener" aria-label="Open Learning OpenGL devlog">
+          <h3 class="project-title">Learning OpenGL | Devlog Series</h3>
         </a>
-        <p><a class="inline-link" href="https://dev.to/noticeablesmeh" target="_blank" rel="noopener">Series</a></p>
-        <p>Completed the full LearnOpenGL tutorial series, developing a solid understanding of modern OpenGL fundamentals from window setup and shader compilation to lighting, materials, and model loading. This series built the technical foundation I am now applying in my ongoing CPU Rasterizer project.</p>
-        <a class="thumb-link" href="assets/images/image1.jpg" aria-label="Open OpenGL devlog image"><img src="assets/images/image1.jpg" alt="OpenGL rendering with textured cubes and lighting" /></a>
+        <p>Structured deep dive into modern OpenGL. Implemented context setup, shader compilation and linking, vertex buffers with indexed meshes, texture sampling, camera movement with GLM transforms, Phong lighting, material handling, multiple light types, and Assimp model loading. Focused on building a strong technical foundation for graphics and rendering.</p>
+        <p><strong>Want the how?</strong> Read the devlog for design choices, breakdowns, and code details.</p>
+        <a class="thumb-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener" aria-label="Open Learning OpenGL devlog" data-overlay="Read Devlog">
+          <img src="assets/images/image1.jpg" alt="OpenGL rendering with textured cubes and lighting" />
+        </a>
+        <div class="cta-row">
+          <a class="devlog-cta" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener">Read the devlog</a>
+        </div>
       </article>
 
+      <!-- CPU Rasterizer -->
       <article class="project">
-        <a class="card-link" href="https://dev.to/noticeablesmeh" target="_blank" rel="noopener" aria-label="Open Rasterizer devlog on dev.to">
+        <a class="card-link" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener" aria-label="Open Rasterizer devlog">
           <h3 class="project-title">CPU Rasterizer | From Pixels to Triangles</h3>
         </a>
-        <p><em>Work in progress</em> <a class="inline-link" href="https://dev.to/noticeablesmeh" target="_blank" rel="noopener">Devlog</a></p>
-        <p>Building a software rasterizer in C++ on the CPU using SDL2 and stb_image. Part 1 covers framebuffer layout and image dumps, Part 2 implements line drawing and optimizes toward a branch-minimal Bresenham variant, and Part 3 introduces a clean <code>geometry.h</code> with vec2/vec3 math, dot/cross, normalization, and length for upcoming wireframe and triangle fill stages.</p>
-        <a class="thumb-link" href="assets/images/image6.png" target="_blank" rel="noopener" aria-label="Open Rasterizer banner"><img src="assets/images/image6.png" alt="Rasterizer project banner" /></a>
+        <p><em>Work in progress</em>. Building a software rasterizer in C++ on the CPU using SDL2 and stb_image. Part 1 sets up the framebuffer and image dumps, Part 2 draws lines and trims branches toward a Bresenham variant, Part 3 adds a clear geometry header with vec2 and vec3 operations for wireframe and triangle fill.</p>
+        <p><strong>Want the how?</strong> Devlog covers design choices, math, and code.</p>
+        <a class="thumb-link" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener" aria-label="Open Rasterizer devlog" data-overlay="Read Devlog">
+          <img src="assets/images/image6.png" alt="Rasterizer project banner" />
+        </a>
+        <div class="cta-row">
+          <a class="devlog-cta" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener">Read the devlog</a>
+        </div>
       </article>
 
+      <!-- Prizm -->
       <article class="project">
         <a class="card-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm on the App Store">
           <h3 class="project-title">Prizm | A Puzzle Adventure</h3>
         </a>
         <p><em>(Available on the App Store)</em> <a class="inline-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener">Link</a></p>
         <p>Light-bending puzzle game shipped from a student capstone to release. I was a lead programmer on core systems and level logic.</p>
-        <a class="thumb-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm screenshots"><img src="assets/images/image2.png" alt="Prizm gameplay" /></a>
+        <a class="thumb-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm screenshots">
+          <img src="assets/images/image2.png" alt="Prizm gameplay" />
+        </a>
       </article>
 
+      <!-- UE5 Scene -->
       <article class="project">
         <a class="card-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener" aria-label="Open Unreal Engine 5 medieval night scene video">
           <h3 class="project-title">Medieval Night Scene in Unreal Engine 5</h3>
         </a>
         <p><a class="inline-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener">Link</a></p>
         <p>Small atmospheric environment. Modeled houses in Maya, set up lighting and post-processing in UE5, and authored Niagara fire and smoke.</p>
-        <a class="thumb-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener" aria-label="Open Unreal Engine 5 scene video"><img src="assets/images/image5.png" alt="Unreal Engine 5 medieval night scene" /></a>
+        <a class="thumb-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener" aria-label="Open Unreal Engine 5 scene video">
+          <img src="assets/images/image5.png" alt="Unreal Engine 5 medieval night scene" />
+        </a>
       </article>
 
+      <!-- Years of Games -->
       <article class="project">
         <a class="card-link" href="https://noticeablesmeh.itch.io/years-of-games" target="_blank" rel="noopener" aria-label="Open Years of Games on itch.io">
           <h3 class="project-title">Years of Games</h3>
         </a>
         <p><a class="inline-link" href="https://noticeablesmeh.itch.io/years-of-games" target="_blank" rel="noopener">Link</a></p>
         <p>One-week jam celebrating 20 years of SU Game Dev. I handled programming and drew a few assets for the second minigame.</p>
-        <a class="thumb-link" href="https://noticeablesmeh.itch.io/years-of-games" target="_blank" rel="noopener" aria-label="Open Years of Games page"><img src="assets/images/image3.png" alt="Collage of mini-games from Years of Games" /></a>
+        <a class="thumb-link" href="https://noticeablesmeh.itch.io/years-of-games" target="_blank" rel="noopener" aria-label="Open Years of Games page">
+          <img src="assets/images/image3.png" alt="Collage of mini-games from Years of Games" />
+        </a>
       </article>
 
+      <!-- Other Projects -->
       <article class="project">
         <a class="card-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener" aria-label="Open William's itch.io profile">
           <h3 class="project-title">Other Game Projects</h3>
         </a>
         <p><a class="inline-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener">Link</a></p>
         <p>Prototypes and experiments ranging from mechanics tests to complete mini-games.</p>
-        <a class="thumb-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener" aria-label="Open itch.io projects"><img src="assets/images/image4.png" alt="Thumbnails of various small game projects" /></a>
+        <a class="thumb-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener" aria-label="Open itch.io projects">
+          <img src="assets/images/image4.png" alt="Thumbnails of various small game projects" />
+        </a>
       </article>
     </section>
 
