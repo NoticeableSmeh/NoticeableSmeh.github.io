@@ -10,15 +10,16 @@
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.6; color: var(--paper); background-color: var(--ink); max-width: 1200px; margin: 0 auto; padding: 20px; padding-top: calc(var(--topbar-h) + 20px); }
 
     .topbar { position: fixed; inset-inline: 0; top: 0; height: var(--topbar-h); background: rgba(20,20,20,.92); backdrop-filter: saturate(120%) blur(6px); border-bottom: 1px solid #333; z-index: 9999; }
-    .topbar-inner { max-width: 850px; margin: 0 auto; height: 100%; padding: 0 16px; display: flex; align-items: center; justify-content: center; gap: 18px; color: #f2e6c5; font-size: .95rem; }
-    .topbar a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px; }
+    .topbar-inner { max-width: 850px; margin: 0 auto; height: 100%; padding: 0 16px; display: flex; align-items: center; justify-content: center; gap: 18px; color: #f2e6c5; font-size: .95rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .topbar-inner::-webkit-scrollbar { display: none; }
+    .topbar a { text-decoration: none; color: inherit; display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto; }
     .topbar a:hover { opacity: .85; }
     .cv-btn { border: 1px solid var(--gold); border-radius: 10px; padding: 8px 14px; gap: 10px; transition: box-shadow .2s ease, background-color .2s ease, transform .05s ease; color: #f2e6c5; font-weight: 700; font-size: 1rem; letter-spacing: .2px; }
     .cv-btn:hover { box-shadow: 0 0 12px rgba(212,175,55,.4); background-color: rgba(212,175,55,.10); }
 
     header.page-header { padding: 14px 0; border-bottom: 1px solid var(--gold); margin-bottom: 18px; }
-    .page-header-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 0 6px; }
-    .avatar { width: 72px; height: 72px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; flex: 0 0 72px; box-shadow: 0 0 0 3px rgba(212,175,55,.08); }
+    .page-header-inner { max-width: 900px; margin: 0 auto; display: grid; place-items: center; gap: 12px; padding: 0 6px; text-align: center; }
+    .avatar { width: 72px; height: 72px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; box-shadow: 0 0 0 3px rgba(212,175,55,.08); }
     .identity { display: grid; gap: 2px; }
     h1 { font-size: 1.9rem; color: #fff; line-height: 1.15; }
     .subtitle { font-size: 1.05rem; color: var(--gold); }
@@ -63,7 +64,6 @@
     .skip:focus { left: 12px; top: calc(var(--topbar-h) + 12px); background: #000; color: #fff; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--gold); z-index: 10000; }
 
     @media (max-width: 768px) {
-      .page-header-inner { gap: 12px; }
       .avatar { width: 60px; height: 60px; }
       h1 { font-size: 1.6rem; }
       .subtitle { font-size: .95rem; }
@@ -74,7 +74,7 @@
 <body>
   <a class="skip" href="#projects">Skip to projects</a>
 
-  <header class="topbar" role="banner">
+  <header class="topbar" role="banner" aria-label="Primary">
     <div class="topbar-inner">
       <a class="cv-btn" href="William%20de%20Try%20CV.pdf" target="_blank" rel="noopener" title="View my CV (opens in new tab)"><span>Resume</span></a>
       <a href="https://www.linkedin.com/in/william-de-try-726470247" target="_blank" rel="noopener" aria-label="William de Try on LinkedIn">
@@ -105,7 +105,6 @@
 
   <main>
     <section id="projects" class="projects" aria-label="Projects">
-      <!-- Learning OpenGL -->
       <article class="project">
         <a class="card-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener" aria-label="Open Learning OpenGL devlog">
           <h3 class="project-title">Learning OpenGL | Devlog Series</h3>
@@ -120,7 +119,6 @@
         </div>
       </article>
 
-      <!-- CPU Rasterizer -->
       <article class="project">
         <a class="card-link" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener" aria-label="Open Rasterizer devlog">
           <h3 class="project-title">CPU Rasterizer | From Pixels to Triangles</h3>
@@ -135,7 +133,6 @@
         </div>
       </article>
 
-      <!-- Prizm -->
       <article class="project">
         <a class="card-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm on the App Store">
           <h3 class="project-title">Prizm | A Puzzle Adventure</h3>
@@ -147,7 +144,6 @@
         </a>
       </article>
 
-      <!-- UE5 Scene -->
       <article class="project">
         <a class="card-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener" aria-label="Open Unreal Engine 5 medieval night scene video">
           <h3 class="project-title">Medieval Night Scene in Unreal Engine 5</h3>
@@ -159,7 +155,6 @@
         </a>
       </article>
 
-      <!-- Years of Games -->
       <article class="project">
         <a class="card-link" href="https://noticeablesmeh.itch.io/years-of-games" target="_blank" rel="noopener" aria-label="Open Years of Games on itch.io">
           <h3 class="project-title">Years of Games</h3>
@@ -171,7 +166,6 @@
         </a>
       </article>
 
-      <!-- Other Projects -->
       <article class="project">
         <a class="card-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener" aria-label="Open William's itch.io profile">
           <h3 class="project-title">Other Game Projects</h3>
