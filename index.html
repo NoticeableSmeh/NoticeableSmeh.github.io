@@ -1,94 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>William de Try - Game Developer Portfolio</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root { --gold: #d4af37; --ink: #1c1b1a; --paper: #eae6e1; --panel: #2a2928; --topbar-h: 52px; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--gold:#d4af37;--ink:#1c1b1a;--paper:#eae6e1;--panel:#2a2928;--topbar-h:52px}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;color:var(--paper);background-color:var(--ink);max-width:1200px;margin:0 auto;padding:16px;padding-top:calc(var(--topbar-h) + 14px)}
+    .topbar{position:fixed;inset-inline:0;top:0;height:var(--topbar-h);background:rgba(20,20,20,.92);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid #333;z-index:9999}
+    .topbar-inner{max-width:900px;margin:0 auto;height:100%;padding:0 12px;display:flex;align-items:center;justify-content:center;gap:14px;color:#f2e6c5;font-size:.95rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .topbar-inner::-webkit-scrollbar{display:none}
+    .topbar a{text-decoration:none;color:inherit;display:inline-flex;align-items:center;gap:8px;flex:0 0 auto}
+    .topbar a:hover{opacity:.85}
+    .cv-btn{border:1px solid var(--gold);border-radius:10px;padding:6px 12px;gap:10px;transition:box-shadow .2s ease,background-color .2s ease,transform .05s ease;color:#f2e6c5;font-weight:700;font-size:.95rem;letter-spacing:.2px}
+    .cv-btn:hover{box-shadow:0 0 12px rgba(212,175,55,.4);background-color:rgba(212,175,55,.10)}
+    header.page-header{padding:8px 0;border-bottom:1px solid var(--gold);margin-bottom:10px}
+    .page-header-inner{max-width:900px;margin:0 auto;display:grid;place-items:center;gap:8px;padding:0 6px;text-align:center}
+    .avatar{width:56px;height:56px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;box-shadow:0 0 0 3px rgba(212,175,55,.08)}
+    h1{font-size:clamp(1.3rem,2.5vw,1.6rem);color:#fff;line-height:1.2}
+    .meta{display:flex;flex-wrap:wrap;gap:.5rem .55rem;align-items:center;justify-content:center;font-size:.95rem}
+    .badge{--h:32px;display:inline-flex;align-items:center;gap:.5rem;padding:0 12px;min-height:var(--h);border-radius:999px;font-weight:800;background:#0e0e0e;color:var(--gold);border:1px solid var(--gold);line-height:1;white-space:nowrap}
+    .glyph{width:1.2em;height:1.2em;display:grid;place-items:center;line-height:1}
+    .glyph>span{font-size:1em;line-height:1}
+    .badge:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    h2{font-size:1.5rem;color:#fff;margin:1.2rem 0 .7rem;border-bottom:1px solid var(--gold);padding-bottom:.35rem}
+    .project-title{font-size:1.2rem;color:var(--gold);margin:0 0 .45rem 0;line-height:1.3}
+    .projects{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media (min-width:720px){.projects{grid-template-columns:1fr 1fr}}
+    @media (min-width:1024px){.projects{grid-template-columns:1fr 1fr;gap:1.2rem}}
+    .project{background:var(--panel);padding:.9rem;border-radius:10px;border-left:4px solid var(--gold);display:flex;flex-direction:column;gap:.55rem}
+    .project a.inline-link{color:var(--gold);font-weight:700;text-decoration:none}
+    .project a.inline-link:hover{text-decoration:underline}
+    .project a.card-link{display:inline-flex;align-items:baseline;gap:.5rem;color:inherit;text-decoration:none}
+    .project a.card-link:hover .project-title{text-decoration:underline}
+    .project .thumb-link{display:block;border-radius:6px;overflow:hidden;border:2px solid #444;position:relative}
+    .project .thumb-link img{width:100%;height:auto;display:block}
+    .project .thumb-link[data-overlay]::after{content:attr(data-overlay);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);color:#fff;font-weight:800;letter-spacing:.3px;opacity:0;transition:opacity .2s ease}
+    .project .thumb-link:hover::after,.project .thumb-link:focus-visible::after{opacity:1}
+    .project p{margin-bottom:.18rem}
+    .cta-row,.btn-row{margin-top:.15rem;display:flex;gap:.5rem;flex-wrap:wrap}
+    .devlog-cta{display:inline-block;padding:7px 11px;border:1px solid var(--gold);border-radius:8px;font-weight:700;text-decoration:none;color:var(--gold);background:transparent;cursor:pointer}
+    .contact-info{background:var(--panel);padding:.9rem;border-radius:10px;margin:1.4rem 0}
+    a{color:var(--gold);font-weight:700;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .skip{position:absolute;left:-9999px;top:-9999px}
+    .skip:focus{left:12px;top:calc(var(--topbar-h) + 12px);background:#000;color:#fff;padding:8px 12px;border-radius:8px;border:1px solid var(--gold);z-index:10000}
+    @media (max-width:640px){.avatar{width:48px;height:48px}.meta{font-size:.92rem;gap:.45rem .5rem}.badge{--h:30px;padding:0 10px}}
+    .feature-grid{display:grid;grid-template-columns:1fr;gap:.6rem;margin-top:.4rem}
+    @media (min-width:720px){.feature-grid{grid-template-columns:1fr 1fr}}
+    .feature{display:flex;gap:.6rem;align-items:flex-start;background:#1c1b1a;border:1px solid #3a3a3a;border-radius:10px;padding:.7rem}
+    .feature .icon{width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:#0e0e0e;border:1px solid #444;color:var(--gold);font-weight:800}
+    .feature .text{display:grid;gap:.15rem}
+    .feature .title{font-weight:800;color:#fff;font-size:.98rem}
+    .feature .desc{font-size:.92rem;color:#e8e8e8}
 
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.6; color: var(--paper); background-color: var(--ink); max-width: 1200px; margin: 0 auto; padding: 16px; padding-top: calc(var(--topbar-h) + 14px); }
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;z-index:10000}
+    .modal.open{display:flex}
+    .modal::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(2px)}
+    .modal-card{position:relative;background:#121212;border:1px solid var(--gold);border-radius:12px;max-width:960px;width:100%;padding:16px;z-index:1}
+    .modal-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+    .modal-title{font-weight:800;color:#fff;font-size:1.1rem}
+    .modal-close{background:#000;color:#fff;border:1px solid #444;border-radius:8px;padding:6px 10px;cursor:pointer}
+    .modal-body{display:grid;gap:12px}
+    .modal-grid{display:grid;grid-template-columns:1fr;gap:12px}
+    @media (min-width:860px){.modal-grid{grid-template-columns:1fr 1fr 1fr}}
+    figure{margin:0;display:flex;flex-direction:column;gap:8px}
+    figure img{width:100%;height:auto;border:2px solid #333;border-radius:8px;display:block;background:#000}
+    figcaption{font-size:.92rem;color:#e8e8e8}
+    .modal-list{margin-left:1.1rem}
 
-    /* Topbar: scrollable on mobile, centered on desktop */
-    .topbar { position: fixed; inset-inline: 0; top: 0; height: var(--topbar-h); background: rgba(20,20,20,.92); backdrop-filter: saturate(120%) blur(6px); border-bottom: 1px solid #333; z-index: 9999; }
-    .topbar-inner {
-      max-width: 900px; margin: 0 auto; height: 100%; padding: 0 12px;
-      display: flex; align-items: center; justify-content: center; gap: 14px;
-      color: #f2e6c5; font-size: .95rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
-    }
-    .topbar-inner::-webkit-scrollbar { display: none; }
-    .topbar a { text-decoration: none; color: inherit; display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto; }
-    .topbar a:hover { opacity: .85; }
-    .cv-btn { border: 1px solid var(--gold); border-radius: 10px; padding: 6px 12px; gap: 10px; transition: box-shadow .2s ease, background-color .2s ease, transform .05s ease; color: #f2e6c5; font-weight: 700; font-size: .95rem; letter-spacing: .2px; }
-    .cv-btn:hover { box-shadow: 0 0 12px rgba(212,175,55,.4); background-color: rgba(212,175,55,.10); }
-
-    /* Condensed hero */
-    header.page-header { padding: 8px 0; border-bottom: 1px solid var(--gold); margin-bottom: 10px; }
-    .page-header-inner { max-width: 900px; margin: 0 auto; display: grid; place-items: center; gap: 8px; padding: 0 6px; text-align: center; }
-    .avatar { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; box-shadow: 0 0 0 3px rgba(212,175,55,.08); }
-    h1 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); color: #fff; line-height: 1.2; }
-
-    /* Meta row with unified, fixed-height, high-contrast pills */
-    .meta { display: flex; flex-wrap: wrap; gap: .5rem .55rem; align-items: center; justify-content: center; font-size: .95rem; }
-    .badge {
-      --h: 32px;
-      display: inline-flex; align-items: center; gap: .5rem;
-      padding: 0 12px; min-height: var(--h);
-      border-radius: 999px; font-weight: 800;
-      background: #0e0e0e; color: var(--gold); border: 1px solid var(--gold);
-      line-height: 1; white-space: nowrap;
-    }
-    /* square emoji box so the icon never hugs the bottom */
-    .glyph { width: 1.2em; height: 1.2em; display: grid; place-items: center; line-height: 1; }
-    .glyph > span { font-size: 1em; line-height: 1; }
-
-    .badge:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-
-    /* Sections */
-    h2 { font-size: 1.5rem; color: #fff; margin: 1.2rem 0 .7rem; border-bottom: 1px solid var(--gold); padding-bottom: .35rem; }
-    .project-title { font-size: 1.2rem; color: var(--gold); margin: 0 0 .45rem 0; line-height: 1.3; }
-
-    .projects { display: grid; grid-template-columns: 1fr; gap: 1rem; }
-    @media (min-width: 720px) { .projects { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 1024px) { .projects { grid-template-columns: 1fr 1fr; gap: 1.2rem; } }
-
-    .project { background: var(--panel); padding: .9rem; border-radius: 10px; border-left: 4px solid var(--gold); display: flex; flex-direction: column; gap: .55rem; }
-    .project a.inline-link { color: var(--gold); font-weight: 700; text-decoration: none; }
-    .project a.inline-link:hover { text-decoration: underline; }
-    .project a.card-link { display: inline-flex; align-items: baseline; gap: .5rem; color: inherit; text-decoration: none; }
-    .project a.card-link:hover .project-title { text-decoration: underline; }
-
-    .project .thumb-link { display: block; border-radius: 6px; overflow: hidden; border: 2px solid #444; position: relative; }
-    .project .thumb-link img { width: 100%; height: auto; display: block; }
-    .project .thumb-link[data-overlay]::after {
-      content: attr(data-overlay);
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(0,0,0,.45);
-      color: #fff; font-weight: 800; letter-spacing: .3px;
-      opacity: 0; transition: opacity .2s ease;
-    }
-    .project .thumb-link:hover::after, .project .thumb-link:focus-visible::after { opacity: 1; }
-
-    .project p { margin-bottom: .18rem; }
-    .cta-row { margin-top: .15rem; }
-    .devlog-cta { display: inline-block; padding: 7px 11px; border: 1px solid var(--gold); border-radius: 8px; font-weight: 700; text-decoration: none; color: var(--gold); }
-    .devlog-cta:hover { box-shadow: 0 0 8px rgba(212,175,55,.35); }
-
-    .contact-info { background: var(--panel); padding: .9rem; border-radius: 10px; margin: 1.4rem 0; }
-    a { color: var(--gold); font-weight: 700; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .skip { position: absolute; left: -9999px; top: -9999px; }
-    .skip:focus { left: 12px; top: calc(var(--topbar-h) + 12px); background: #000; color: #fff; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--gold); z-index: 10000; }
-
-    /* Mobile tweaks */
-    @media (max-width: 640px) {
-      .avatar { width: 48px; height: 48px; }
-      .meta { font-size: .92rem; gap: .45rem .5rem; }
-      .badge { --h: 30px; padding: 0 10px; }
-    }
+    .thumb-small img{max-height:320px;object-fit:contain;background:#000}
+    @media (max-width:480px){.thumb-small img{max-height:260px}}
   </style>
 </head>
 <body>
@@ -97,25 +80,20 @@
   <header class="topbar" role="banner" aria-label="Primary">
     <div class="topbar-inner">
       <a class="cv-btn" href="William%20de%20Try%20CV.pdf" target="_blank" rel="noopener" title="View my CV (opens in new tab)"><span>Resume</span></a>
-
       <a href="https://www.linkedin.com/in/william-de-try-726470247" target="_blank" rel="noopener" aria-label="William de Try on LinkedIn">
-        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="border-radius:3px; display:block;"><rect x="0" y="0" width="24" height="24" rx="4" ry="4" fill="#0A66C2"/><text x="7.5" y="17" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">in</text></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="border-radius:3px;display:block"><rect x="0" y="0" width="24" height="24" rx="4" ry="4" fill="#0A66C2"/><text x="7.5" y="17" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">in</text></svg>
         <span>LinkedIn</span>
       </a>
-
-      <!-- NEW: GitHub link -->
       <a href="https://github.com/NoticeableSmeh" target="_blank" rel="noopener" aria-label="William de Try on GitHub">
-        <img src="https://cdn.simpleicons.org/github/FFFFFF" alt="GitHub" width="18" height="18" style="display:block;" />
+        <img src="https://cdn.simpleicons.org/github/FFFFFF" alt="GitHub" width="18" height="18" style="display:block"/>
         <span>GitHub</span>
       </a>
-
       <a href="mailto:william.detry@hotmail.se" aria-label="Email William de Try">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="#F2C94C" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.236-7.428 4.57a2 2 0 0 1-2.144 0L3 8.236V6l8.2 5.045a1 1 0 0 0 1.07 0L21 6v2.236Z"/></svg>
         <span>william.detry@hotmail.se</span>
       </a>
-
       <a href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener" aria-label="William de Try on Itch.io">
-        <img src="https://cdn.simpleicons.org/itchdotio/FA5C5C" alt="Itch.io" width="18" height="18" style="display:block;" />
+        <img src="https://cdn.simpleicons.org/itchdotio/FA5C5C" alt="Itch.io" width="18" height="18" style="display:block"/>
         <span>Itch.io</span>
       </a>
     </div>
@@ -136,13 +114,56 @@
   <main>
     <section id="projects" class="projects" aria-label="Projects">
       <article class="project">
+        <a class="card-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm on the App Store">
+          <h3 class="project-title">Prizm | A Puzzle Adventure</h3>
+        </a>
+        <p><em>(Available on the App Store)</em> <a class="inline-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener">Link</a></p>
+        <p>Core gameplay programmer. Built the light-bounce system end to end: deterministic reflections, splitters, and colour mixing; goal checks and level completion flow; plus small editor tools for quick puzzle iteration.</p>
+        <a class="thumb-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm screenshots">
+          <img src="assets/images/image2.png" alt="Prizm gameplay"/>
+        </a>
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="icon">🎯</div>
+            <div class="text">
+              <div class="title">Core Gameplay Programming</div>
+              <div class="desc">Reflections, splitters and win conditions for completing levels.</div>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="icon">🛠️</div>
+            <div class="text">
+              <div class="title">Tech</div>
+              <div class="desc">Unity + C#. Lightweight editor tools to speed up building and testing puzzles.</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a class="card-link" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener" aria-label="Open Rasterizer repository">
+          <h3 class="project-title">CPU Rasterizer (C++)</h3>
+        </a>
+        <p><strong>Rasterizer Project</strong></p>
+        <p>A small software rasterizer that draws OBJ models on the CPU. Lines, filled triangles, back-face culling, and a simple framebuffer. The devlog walks through the ideas step by step.</p>
+        <a class="thumb-link thumb-small" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener" aria-label="Open rasterizer devlog" data-overlay="Read the devlog">
+          <img src="assets/images/framebuffer.png" alt="Rasterized cow filled with random per-face colors"/>
+        </a>
+        <div class="btn-row">
+          <a class="devlog-cta" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener">See the code (GitHub)</a>
+          <a class="devlog-cta" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener">Read how it works</a>
+          <button class="devlog-cta" type="button" data-modal-open="rasterizer-info" aria-controls="rasterizer-info">More info</button>
+        </div>
+      </article>
+
+      <article class="project">
         <a class="card-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener" aria-label="Open Learning OpenGL devlog">
           <h3 class="project-title">Learning OpenGL | Devlog Series</h3>
         </a>
-        <p>Structured deep dive into modern OpenGL. Implemented context setup, shader compilation and linking, vertex buffers with indexed meshes, texture sampling, camera movement with GLM transforms, Phong lighting, material handling, multiple light types, and Assimp model loading. Focused on a strong graphics foundation.</p>
-        <p><strong>Want the how?</strong> Read the devlog for design choices, breakdowns, and code details.</p>
+        <p>A hands-on tour of modern OpenGL: setting up the window/context, writing shaders, pushing meshes with VBOs/IBOs, sampling textures, moving a GLM camera, and adding lights.</p>
+        <p>Across the posts I note the “why” behind each step and tiny gotchas (coordinate spaces, winding, depth state) so it’s easy to follow along and tinker.</p>
         <a class="thumb-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener" aria-label="Open Learning OpenGL devlog" data-overlay="Read Devlog">
-          <img src="assets/images/image1.jpg" alt="OpenGL rendering with textured cubes and lighting" />
+          <img src="assets/images/image1.jpg" alt="OpenGL rendering with textured cubes and lighting"/>
         </a>
         <div class="cta-row">
           <a class="devlog-cta" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener">Read the devlog</a>
@@ -150,38 +171,13 @@
       </article>
 
       <article class="project">
-        <a class="card-link" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener" aria-label="Open Rasterizer devlog">
-          <h3 class="project-title">CPU Rasterizer | From Pixels to Triangles</h3>
-        </a>
-        <p><em>Work in progress</em>. Software rasterizer in C++ on the CPU using SDL2 and stb_image. Part 1 sets up the framebuffer and image dumps, Part 2 draws lines and trims branches toward a Bresenham variant, Part 3 adds a clean geometry header with vec2 and vec3 operations for wireframe and triangle fill.</p>
-        <p><strong>Want the how?</strong> Devlog covers design choices, math, and code.</p>
-        <a class="thumb-link" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener" aria-label="Open Rasterizer devlog" data-overlay="Read Devlog">
-          <img src="assets/images/image6.png" alt="Rasterizer project banner" />
-        </a>
-        <div class="cta-row">
-          <a class="devlog-cta" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener">Read the devlog</a>
-        </div>
-      </article>
-
-      <article class="project">
-        <a class="card-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm on the App Store">
-          <h3 class="project-title">Prizm | A Puzzle Adventure</h3>
-        </a>
-        <p><em>(Available on the App Store)</em> <a class="inline-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener">Link</a></p>
-        <p>Light-bending puzzle game shipped from a student capstone to release. I was a lead programmer on core systems and level logic.</p>
-        <a class="thumb-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm screenshots">
-          <img src="assets/images/image2.png" alt="Prizm gameplay" />
-        </a>
-      </article>
-
-      <article class="project">
         <a class="card-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener" aria-label="Open Unreal Engine 5 medieval night scene video">
           <h3 class="project-title">Medieval Night Scene in Unreal Engine 5</h3>
         </a>
         <p><a class="inline-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener">Link</a></p>
-        <p>Small atmospheric environment. Modeled houses in Maya, set up lighting and post-processing in UE5, and authored Niagara fire and smoke.</p>
+        <p>Small atmospheric environment built in UE5. Houses in Maya, lighting and post in-engine, Niagara for fire and smoke.</p>
         <a class="thumb-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener" aria-label="Open Unreal Engine 5 scene video">
-          <img src="assets/images/image5.png" alt="Unreal Engine 5 medieval night scene" />
+          <img src="assets/images/image5.png" alt="Unreal Engine 5 medieval night scene"/>
         </a>
       </article>
 
@@ -190,9 +186,9 @@
           <h3 class="project-title">Years of Games</h3>
         </a>
         <p><a class="inline-link" href="https://noticeablesmeh.itch.io/years-of-games" target="_blank" rel="noopener">Link</a></p>
-        <p>One-week jam celebrating 20 years of SU Game Dev. I handled programming and drew a few assets for the second minigame.</p>
+        <p>One-week jam for SU Game Dev’s 20th. I handled programming and drew a few bits for the second minigame.</p>
         <a class="thumb-link" href="https://noticeablesmeh.itch.io/years-of-games" target="_blank" rel="noopener" aria-label="Open Years of Games page">
-          <img src="assets/images/image3.png" alt="Collage of mini-games from Years of Games" />
+          <img src="assets/images/image3.png" alt="Collage of mini-games from Years of Games"/>
         </a>
       </article>
 
@@ -201,25 +197,94 @@
           <h3 class="project-title">Other Game Projects</h3>
         </a>
         <p><a class="inline-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener">Link</a></p>
-        <p>Prototypes and experiments ranging from mechanics tests to complete mini-games.</p>
+        <p>Prototypes and experiments, from mechanics tests to small finished games.</p>
         <a class="thumb-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener" aria-label="Open itch.io projects">
-          <img src="assets/images/image4.png" alt="Thumbnails of various small game projects" />
+          <img src="assets/images/image4.png" alt="Thumbnails of various small game projects"/>
         </a>
       </article>
     </section>
 
     <section>
       <h2>About Me</h2>
-      <p>Game Development student at Stockholm University focused on graphics programming and engine systems. I enjoy digging into shaders, rendering pipelines, and gameplay architecture. I maintain devlogs to document what I build and why.</p>
+      <p>Game Development student at Stockholm University focused on graphics programming and engine systems. I like poking at shaders, render paths, and neat little gameplay loops. I write devlogs to keep track of how things came together.</p>
     </section>
 
     <section class="contact-info">
       <h2>Contact Info</h2>
       <p>Email: <a href="mailto:william.detry@hotmail.se">william.detry@hotmail.se</a></p>
       <p>Phone: +46 709102545</p>
-      <!-- NEW: GitHub in contact section -->
       <p>GitHub: <a href="https://github.com/NoticeableSmeh" target="_blank" rel="noopener">github.com/NoticeableSmeh</a></p>
     </section>
   </main>
+
+  <div class="modal" id="rasterizer-info" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-top">
+        <div class="modal-title">CPU Rasterizer — Details</div>
+        <button class="modal-close" type="button" data-modal-close="rasterizer-info" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="btn-row">
+          <a class="devlog-cta" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener">Repository</a>
+          <a class="devlog-cta" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener">Devlog</a>
+        </div>
+        <ul class="modal-list">
+          <li>RGBA framebuffer with safe pixel writes</li>
+          <li>Integer line rasterization</li>
+          <li>Barycentric triangle fill with per-face colour</li>
+          <li>Screen-space projection and back-face culling</li>
+          <li>OBJ vertex/face loading</li>
+        </ul>
+        <div class="modal-grid">
+          <figure>
+            <img src="assets/images/triangle.png" alt="Line raster demo with coloured edges"/>
+            <figcaption>Lines step cleanly using a tiny integer error.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/wireframe.png" alt="Dense red wireframe dinosaur model"/>
+            <figcaption>Wireframe view helps check projection and indexing.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/framebuffer.png" alt="Tri-filled cow written to framebuffer"/>
+            <figcaption>Triangle fill writes straight into the CPU framebuffer.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id){
+      const m=document.getElementById(id);
+      if(!m) return;
+      m.classList.add('open');
+      m.setAttribute('aria-hidden','false');
+    }
+    function closeModal(id){
+      const m=document.getElementById(id);
+      if(!m) return;
+      m.classList.remove('open');
+      m.setAttribute('aria-hidden','true');
+    }
+    document.querySelectorAll('[data-modal-open]').forEach(b=>{
+      b.style.cursor='pointer';
+      b.addEventListener('click',()=>openModal(b.getAttribute('data-modal-open')));
+    });
+    document.querySelectorAll('[data-modal-close]').forEach(b=>{
+      b.style.cursor='pointer';
+      b.addEventListener('click',()=>closeModal(b.getAttribute('data-modal-close')));
+    });
+    document.addEventListener('keydown',e=>{
+      if(e.key==='Escape'){
+        document.querySelectorAll('.modal.open').forEach(m=>{
+          m.classList.remove('open');
+          m.setAttribute('aria-hidden','true');
+        });
+      }
+    });
+    document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{
+      if(e.target===m) closeModal(m.id);
+    }));
+  </script>
 </body>
 </html>
