@@ -72,6 +72,11 @@
 
     .thumb-small img{max-height:320px;object-fit:contain;background:#000}
     @media (max-width:480px){.thumb-small img{max-height:260px}}
+
+    /* === series stat badges === */
+    .stat-badges{display:flex;gap:.4rem;flex-wrap:wrap;margin:.2rem 0 .1rem}
+    .stat{display:inline-flex;align-items:center;gap:.35rem;font-size:.85rem;color:#e8e8e8;background:#141414;border:1px solid #444;border-radius:999px;padding:3px 8px;line-height:1}
+    .stat .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block}
   </style>
 </head>
 <body>
@@ -144,7 +149,12 @@
         <a class="card-link" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener" aria-label="Open Rasterizer repository">
           <h3 class="project-title">CPU Rasterizer (C++)</h3>
         </a>
-        <p><strong>Rasterizer Project</strong></p>
+        <!-- Series stat badges -->
+        <div class="stat-badges" aria-label="Rasterizer series length and word count">
+          <span class="stat" aria-label="Five parts"><span class="dot" aria-hidden="true"></span>5 parts</span>
+          <span class="stat" aria-label="Over four thousand words"><span class="dot" aria-hidden="true"></span>4,000+ words</span>
+        </div>
+        <p><strong>Rasterizer Project</strong> (<strong>5-part, 4k+ word series</strong>)</p>
         <p>A small software rasterizer that draws OBJ models on the CPU. Lines, filled triangles, back-face culling, and a simple framebuffer. The devlog walks through the ideas step by step.</p>
         <a class="thumb-link thumb-small" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener" aria-label="Open rasterizer devlog" data-overlay="Read the devlog">
           <img src="assets/images/framebuffer.png" alt="Rasterized cow filled with random per-face colors"/>
@@ -160,7 +170,12 @@
         <a class="card-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener" aria-label="Open Learning OpenGL devlog">
           <h3 class="project-title">Learning OpenGL | Devlog Series</h3>
         </a>
-        <p>A hands-on tour of modern OpenGL: setting up the window/context, writing shaders, pushing meshes with VBOs/IBOs, sampling textures, moving a GLM camera, and adding lights.</p>
+        <!-- Series stat badges -->
+        <div class="stat-badges" aria-label="OpenGL devlog length and word count">
+          <span class="stat" aria-label="Six parts"><span class="dot" aria-hidden="true"></span>6 parts</span>
+          <span class="stat" aria-label="Over seven thousand words"><span class="dot" aria-hidden="true"></span>7,000+ words</span>
+        </div>
+        <p>A hands-on tour of modern OpenGL: setting up the window/context, writing shaders, pushing meshes with VBOs/IBOs, sampling textures, moving a GLM camera, and adding lights <em>(<strong>6-part, 7k+ word series</strong>).</em></p>
         <p>Across the posts I note the “why” behind each step and tiny gotchas (coordinate spaces, winding, depth state) so it’s easy to follow along and tinker.</p>
         <a class="thumb-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener" aria-label="Open Learning OpenGL devlog" data-overlay="Read Devlog">
           <img src="assets/images/image1.jpg" alt="OpenGL rendering with textured cubes and lighting"/>
@@ -228,6 +243,13 @@
           <a class="devlog-cta" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener">Repository</a>
           <a class="devlog-cta" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener">Devlog</a>
         </div>
+
+        <!-- Series stat badges inside modal -->
+        <div class="stat-badges" aria-label="Rasterizer series details">
+          <span class="stat"><span class="dot" aria-hidden="true"></span>5 parts</span>
+          <span class="stat"><span class="dot" aria-hidden="true"></span>4,000+ words</span>
+        </div>
+
         <ul class="modal-list">
           <li>RGBA framebuffer with safe pixel writes</li>
           <li>Integer line rasterization</li>
