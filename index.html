@@ -15,31 +15,53 @@
     .topbar a:hover{opacity:.85}
     .cv-btn{border:1px solid var(--gold);border-radius:10px;padding:6px 12px;gap:10px;transition:box-shadow .2s ease,background-color .2s ease,transform .05s ease;color:#f2e6c5;font-weight:700;font-size:.95rem;letter-spacing:.2px}
     .cv-btn:hover{box-shadow:0 0 12px rgba(212,175,55,.4);background-color:rgba(212,175,55,.10)}
-    header.page-header{padding:8px 0;/* border-bottom:1px solid var(--gold); */margin-bottom:10px}
-    .page-header-inner{max-width:900px;margin:0 auto;display:grid;place-items:center;gap:8px;padding:0 6px;text-align:center}
-    .avatar{width:56px;height:56px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;box-shadow:0 0 0 3px rgba(212,175,55,.08)}
+
+    header.page-header{padding:12px 0;margin-bottom:10px}
+    /* FORCE stacked + centered header on all sizes */
+    .page-header-inner{
+      max-width:900px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1fr; /* single column only */
+      grid-auto-flow: row;       /* ensure stacking */
+      gap:8px;
+      padding:0 6px;
+      text-align:center;
+      place-items:center;
+      align-items:center;
+    }
+    .avatar{width:56px;height:56px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;box-shadow:0 0 0 3px rgba(212,175,55,.08);margin:0 auto}
     h1{font-size:clamp(1.3rem,2.5vw,1.6rem);color:#fff;line-height:1.2}
     .meta{display:flex;flex-wrap:wrap;gap:.5rem .55rem;align-items:center;justify-content:center;font-size:.95rem}
     .badge{--h:32px;display:inline-flex;align-items:center;gap:.5rem;padding:0 12px;min-height:var(--h);border-radius:999px;font-weight:800;background:#0e0e0e;color:var(--gold);border:1px solid var(--gold);line-height:1;white-space:nowrap}
     .glyph{width:1.2em;height:1.2em;display:grid;place-items:center;line-height:1}
     .glyph>span{font-size:1em;line-height:1}
     .badge:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
     h2{font-size:1.5rem;color:#fff;margin:1.2rem 0 .7rem;border-bottom:1px solid var(--gold);padding-bottom:.35rem}
-    .project-title{font-size:1.2rem;color:var(--gold);margin:0 0 .45rem 0;line-height:1.3}
-    .projects{display:grid;grid-template-columns:1fr;gap:1rem}
+    .project-title{font-size:1.2rem;color:var(--gold);margin:0 0 .45rem 0;line-height:1.3;text-align:center}
+
+    /* grid - make rows equal height so boxes line up */
+    .projects{display:grid;grid-template-columns:1fr;gap:1rem;grid-auto-rows:1fr}
     @media (min-width:720px){.projects{grid-template-columns:1fr 1fr}}
     @media (min-width:1024px){.projects{grid-template-columns:1fr 1fr;gap:1.2rem}}
-    .project{background:var(--panel);padding:.9rem;border-radius:10px;border-left:4px solid var(--gold);display:flex;flex-direction:column;gap:.55rem}
+
+    .project{background:var(--panel);padding:.9rem;border-radius:10px;border-left:4px solid var(--gold);display:flex;flex-direction:column;gap:.55rem; /* ensure inner spacing */ }
+    /* make each project stretch to fill the grid cell */
+    .projects > .project{height:100%;}
+
     .project a.inline-link{color:var(--gold);font-weight:700;text-decoration:none}
     .project a.inline-link:hover{text-decoration:underline}
-    .project a.card-link{display:inline-flex;align-items:baseline;gap:.5rem;color:inherit;text-decoration:none}
+    .project a.card-link{display:flex;align-items:center;justify-content:center;gap:.5rem;color:inherit;text-decoration:none}
     .project a.card-link:hover .project-title{text-decoration:underline}
     .project .thumb-link{display:block;border-radius:6px;overflow:hidden;border:2px solid #444;position:relative}
     .project .thumb-link img{width:100%;height:auto;display:block}
     .project .thumb-link[data-overlay]::after{content:attr(data-overlay);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);color:#fff;font-weight:800;letter-spacing:.3px;opacity:0;transition:opacity .2s ease}
     .project .thumb-link:hover::after,.project .thumb-link:focus-visible::after{opacity:1}
+    /* center project body text so it aligns with centered titles/buttons */
+    .project p, .project .desc, .project figcaption { text-align:center; }
     .project p{margin-bottom:.18rem}
-    .cta-row,.btn-row{margin-top:.15rem;display:flex;gap:.5rem;flex-wrap:wrap}
+    .cta-row,.btn-row{margin-top:.15rem;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
     .devlog-cta{display:inline-block;padding:7px 11px;border:1px solid var(--gold);border-radius:8px;font-weight:700;text-decoration:none;color:var(--gold);background:transparent;cursor:pointer}
     .contact-info{background:var(--panel);padding:.9rem;border-radius:10px;margin:1.4rem 0}
     a{color:var(--gold);font-weight:700;text-decoration:none}
@@ -74,9 +96,12 @@
     @media (max-width:480px){.thumb-small img{max-height:260px}}
 
     /* === series stat badges === */
-    .stat-badges{display:flex;gap:.4rem;flex-wrap:wrap;margin:.2rem 0 .1rem}
+    .stat-badges{display:flex;gap:.4rem;flex-wrap:wrap;margin:.2rem 0 .1rem;justify-content:center}
     .stat{display:inline-flex;align-items:center;gap:.35rem;font-size:.85rem;color:#e8e8e8;background:#141414;border:1px solid #444;border-radius:999px;padding:3px 8px;line-height:1}
     .stat .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block}
+
+    /* small helper for modal content scroll on mobile */
+    .modal-card .modal-body{max-height:70vh;overflow:auto;padding-right:8px}
   </style>
 </head>
 <body>
@@ -107,17 +132,21 @@
   <header class="page-header">
     <div class="page-header-inner">
       <img class="avatar" src="assets/images/headshot.jpg" alt="Portrait of William de Try" loading="lazy" decoding="async"/>
-      <h1>William de Try</h1>
-      <p class="meta">
-        <span class="badge" aria-label="Location"><span class="glyph"><span role="img" aria-hidden="true">📍</span></span> Stockholm, Sweden</span>
-        <span class="badge" aria-label="Role"><span class="glyph"><span role="img" aria-hidden="true">🎮</span></span> Game Developer</span>
-        <span class="badge" aria-label="Specialty"><span class="glyph"><span role="img" aria-hidden="true">📐</span></span> Graphics &amp; Rendering</span>
-      </p>
+      <div>
+        <h1>William de Try</h1>
+        <!-- centered badges and explicit specialty -->
+        <p class="meta" aria-hidden="false">
+          <span class="badge" aria-label="Location"><span class="glyph"><span role="img" aria-hidden="true">📍</span></span> Stockholm, Sweden</span>
+          <span class="badge" aria-label="Role"><span class="glyph"><span role="img" aria-hidden="true">🎮</span></span> Game Developer</span>
+          <span class="badge" aria-label="Specialty"><span class="glyph"><span role="img" aria-hidden="true">📐</span></span> Graphics &amp; Rendering Programmer</span>
+        </p>
+      </div>
     </div>
   </header>
 
   <main>
     <section id="projects" class="projects" aria-label="Projects">
+      <!-- Prizm - strongest project first -->
       <article class="project">
         <a class="card-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm on the App Store">
           <h3 class="project-title">Prizm | A Puzzle Adventure</h3>
@@ -127,50 +156,38 @@
         <a class="thumb-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm screenshots">
           <img src="assets/images/image2.png" alt="Prizm gameplay"/>
         </a>
-        <div class="feature-grid">
-          <div class="feature">
-            <div class="icon">🎯</div>
-            <div class="text">
-              <div class="title">Core Gameplay Programming</div>
-              <div class="desc">Reflections, splitters and win conditions for completing levels.</div>
-            </div>
-          </div>
-          <div class="feature">
-            <div class="icon">🛠️</div>
-            <div class="text">
-              <div class="title">Tech</div>
-              <div class="desc">Unity + C#. Level templates and tools to quickly build and test levels.</div>
-            </div>
-          </div>
+
+        <div class="btn-row">
+          <a class="devlog-cta" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener">Open on App Store</a>
+          <!-- Read more opens an in-page modal -->
+          <button class="devlog-cta" type="button" data-modal-open="prizm-info" aria-controls="prizm-info" id="prizm-readmore">Read more</button>
         </div>
       </article>
 
+      <!-- CPU Rasterizer -->
       <article class="project">
         <a class="card-link" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener" aria-label="Open Rasterizer repository">
           <h3 class="project-title">CPU Rasterizer (C++)</h3>
         </a>
-        <!-- Series stat badges -->
         <div class="stat-badges" aria-label="Rasterizer series length and word count">
           <span class="stat" aria-label="Five parts"><span class="dot" aria-hidden="true"></span>5 parts</span>
           <span class="stat" aria-label="Over four thousand words"><span class="dot" aria-hidden="true"></span>4,000+ words</span>
         </div>
-        <p><strong>Rasterizer Project</strong> (<strong>5-part, 4k+ word series</strong>)</p>
         <p>A small software rasterizer that draws OBJ models on the CPU. Lines, filled triangles, back-face culling, and a simple framebuffer. The devlog walks through the ideas step by step.</p>
         <a class="thumb-link thumb-small" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener" aria-label="Open rasterizer devlog" data-overlay="Read the devlog">
           <img src="assets/images/framebuffer.png" alt="Rasterized cow filled with random per-face colors"/>
         </a>
         <div class="btn-row">
           <a class="devlog-cta" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener">See the code (GitHub)</a>
-          <a class="devlog-cta" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener">Read how it works</a>
-          <button class="devlog-cta" type="button" data-modal-open="rasterizer-info" aria-controls="rasterizer-info">More info</button>
+          <a class="devlog-cta" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener">Read the devlog</a>
         </div>
       </article>
 
+      <!-- Learning OpenGL -->
       <article class="project">
         <a class="card-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener" aria-label="Open Learning OpenGL devlog">
           <h3 class="project-title">Learning OpenGL | Devlog Series</h3>
         </a>
-        <!-- Series stat badges -->
         <div class="stat-badges" aria-label="OpenGL devlog length and word count">
           <span class="stat" aria-label="Six parts"><span class="dot" aria-hidden="true"></span>6 parts</span>
           <span class="stat" aria-label="Over seven thousand words"><span class="dot" aria-hidden="true"></span>7,000+ words</span>
@@ -185,6 +202,7 @@
         </div>
       </article>
 
+      <!-- Unreal scene -->
       <article class="project">
         <a class="card-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener" aria-label="Open Unreal Engine 5 medieval night scene video">
           <h3 class="project-title">Medieval Night Scene in Unreal Engine 5</h3>
@@ -196,23 +214,13 @@
         </a>
       </article>
 
-      <article class="project">
-        <a class="card-link" href="https://noticeablesmeh.itch.io/years-of-games" target="_blank" rel="noopener" aria-label="Open Years of Games on itch.io">
-          <h3 class="project-title">Years of Games</h3>
-        </a>
-        <p><a class="inline-link" href="https://noticeablesmeh.itch.io/years-of-games" target="_blank" rel="noopener">Link</a></p>
-        <p>One-week jam for SU Game Dev’s 20th. I handled programming and drew a few bits for the second minigame.</p>
-        <a class="thumb-link" href="https://noticeablesmeh.itch.io/years-of-games" target="_blank" rel="noopener" aria-label="Open Years of Games page">
-          <img src="assets/images/image3.png" alt="Collage of mini-games from Years of Games"/>
-        </a>
-      </article>
-
+      <!-- Other Game Projects (updated) -->
       <article class="project">
         <a class="card-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener" aria-label="Open William's itch.io profile">
           <h3 class="project-title">Other Game Projects</h3>
         </a>
-        <p><a class="inline-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener">Link</a></p>
-        <p>Prototypes and experiments, from mechanics tests to small finished games.</p>
+        <p><a class="inline-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener">Playable builds on Itch.io (Prototypes, experiments, and small finished games)</a></p>
+        <p>Game jam project made in 1 week. I handled programming and some art for a minigame.</p>
         <a class="thumb-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener" aria-label="Open itch.io projects">
           <img src="assets/images/image4.png" alt="Thumbnails of various small game projects"/>
         </a>
@@ -227,11 +235,70 @@
     <section class="contact-info">
       <h2>Contact Info</h2>
       <p>Email: <a href="mailto:william.detry@hotmail.se">william.detry@hotmail.se</a></p>
-      <p>Phone: +46 709102545</p>
       <p>GitHub: <a href="https://github.com/NoticeableSmeh" target="_blank" rel="noopener">github.com/NoticeableSmeh</a></p>
     </section>
   </main>
 
+  <!-- Prizm modal (English, colon instead of dash) -->
+<div class="modal" id="prizm-info" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="prizm-info-title">
+  <div class="modal-card" role="document">
+    <div class="modal-top">
+      <div class="modal-title" id="prizm-info-title">Prizm: What I did</div>
+      <button class="modal-close" type="button" data-modal-close="prizm-info" aria-label="Close">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <section>
+        <h3 style="color:var(--gold);margin-bottom:6px">What it is</h3>
+        <p>Prizm is a mobile puzzle game where the player directs light beams through mirrors and splitters to produce the correct colour at one or more goals. The project demonstrates a complete gameplay system with deterministic reflections, splitting, colour mixing, and level progression.</p>
+      </section>
+
+      <section>
+        <h3 style="color:var(--gold);margin-bottom:6px">How I built it</h3>
+        <ul class="modal-list">
+          <li>Implemented beam paths using a precomputed list of reflection points so the LineRenderer and the gameplay logic always share the exact same path.</li>
+          <li>Built mirror and splitter mechanics. Mirrors reflect beams deterministically, and splitters spawn a second beam that follows its own path while the original continues.</li>
+          <li>Implemented colour mixing so multiple beams can combine to produce target colours for goal checks.</li>
+          <li>Created goal validation and level logic that verify win conditions when all targets match their required colours.</li>
+          <li>Developed Unity editor tools and level templates to speed up puzzle iteration and testing.</li>
+          <li>Debugged edge cases such as missing beams, incorrect reflections, and split beams not being removed correctly.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 style="color:var(--gold);margin-bottom:6px">Why I chose this approach</h3>
+        <p>I aimed for deterministic, easy-to-test logic and a clear visual representation that always matches the game rules. Separating path calculation from rendering makes the beam behavior predictable and easier to debug. The editor tools were created to keep iteration fast, which is important in puzzle development.</p>
+      </section>
+
+      <section>
+        <h3 style="color:var(--gold);margin-bottom:6px">What I take to the next project</h3>
+        <ul class="modal-list">
+          <li>Create reusable tools early since they save a lot of time during level creation.</li>
+          <li>Keep a single source of truth for gameplay and visualisation to avoid mismatches.</li>
+          <li>Add better logging and telemetry to reproduce and fix bugs faster in complex interactions.</li>
+          <li>Plan simple automated tests for core mechanics such as reflections, splitters, and colour mixing.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 style="color:var(--gold);margin-bottom:6px">What I would do with more time</h3>
+        <ul class="modal-list">
+          <li>Add more advanced level-authoring tools, such as previews, additional templates, and quick profiling for balance testing.</li>
+          <li>Improve visual feedback for colour mixing and collisions so players understand the rules faster.</li>
+          <li>Optimize the beam system for handling many simultaneous beams and for performance on lower-end mobile devices.</li>
+          <li>Create a lightweight playtesting pipeline with feedback forms and simple telemetry to improve levels based on player data.</li>
+        </ul>
+      </section>
+
+      <div style="margin-top:8px">
+        <h4 style="color:#fff;margin-bottom:6px">Short summary</h4>
+        <p style="color:#e8e8e8">I developed the core mechanics in Prizm: deterministic reflections, splitters, colour mixing, goal validation, and editor tools for fast level iteration. The work shows both technical skill and the ability to complete a full gameplay system.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Rasterizer modal kept in case you want it -->
   <div class="modal" id="rasterizer-info" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-card">
       <div class="modal-top">
@@ -244,7 +311,6 @@
           <a class="devlog-cta" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener">Devlog</a>
         </div>
 
-        <!-- Series stat badges inside modal -->
         <div class="stat-badges" aria-label="Rasterizer series details">
           <span class="stat"><span class="dot" aria-hidden="true"></span>5 parts</span>
           <span class="stat"><span class="dot" aria-hidden="true"></span>4,000+ words</span>
@@ -276,37 +342,55 @@
   </div>
 
   <script>
+    // Generic modal open/close helpers
     function openModal(id){
-      const m=document.getElementById(id);
+      const m = document.getElementById(id);
       if(!m) return;
       m.classList.add('open');
       m.setAttribute('aria-hidden','false');
+      // move focus into modal for accessibility
+      const firstFocusable = m.querySelector('button, a, [tabindex]:not([tabindex="-1"])');
+      if(firstFocusable) firstFocusable.focus();
     }
     function closeModal(id){
-      const m=document.getElementById(id);
+      const m = document.getElementById(id);
       if(!m) return;
       m.classList.remove('open');
       m.setAttribute('aria-hidden','true');
     }
+
+    // wire up data-modal-open and data-modal-close
     document.querySelectorAll('[data-modal-open]').forEach(b=>{
       b.style.cursor='pointer';
-      b.addEventListener('click',()=>openModal(b.getAttribute('data-modal-open')));
+      b.addEventListener('click', ()=> openModal(b.getAttribute('data-modal-open')));
     });
     document.querySelectorAll('[data-modal-close]').forEach(b=>{
       b.style.cursor='pointer';
-      b.addEventListener('click',()=>closeModal(b.getAttribute('data-modal-close')));
+      b.addEventListener('click', ()=> closeModal(b.getAttribute('data-modal-close')));
     });
-    document.addEventListener('keydown',e=>{
-      if(e.key==='Escape'){
-        document.querySelectorAll('.modal.open').forEach(m=>{
+
+    // close on Escape
+    document.addEventListener('keydown', e=>{
+      if(e.key === 'Escape'){
+        document.querySelectorAll('.modal.open').forEach(m => {
           m.classList.remove('open');
           m.setAttribute('aria-hidden','true');
         });
       }
     });
-    document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{
-      if(e.target===m) closeModal(m.id);
-    }));
+
+    // click outside to close
+    document.querySelectorAll('.modal').forEach(m => {
+      m.addEventListener('click', e => {
+        if(e.target === m) {
+          m.classList.remove('open');
+          m.setAttribute('aria-hidden','true');
+        }
+      });
+    });
+
+    // ensure Prizm "Read more" button uses data-modal-open attribute (already set in markup).
+    // nothing else needed here.
   </script>
 </body>
 </html>
