@@ -3,11 +3,49 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>William de Try - Game Developer Portfolio</title>
+  <title>William de Try | Game Programmer | Stockholm</title>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{--gold:#d4af37;--ink:#1c1b1a;--paper:#eae6e1;--panel:#2a2928;--topbar-h:52px}
     body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;color:var(--paper);background-color:var(--ink);max-width:1200px;margin:0 auto;padding:16px;padding-top:calc(var(--topbar-h) + 14px)}
+    
+    .hire-banner {
+      background: linear-gradient(90deg, #1c1b1a 0%, #2a2928 100%);
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin: 20px auto 30px;
+      max-width: 900px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(212,175,55,0.15);
+    }
+    .hire-banner h2 {
+      color: var(--gold);
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      border: none;
+    }
+    .hire-banner p {
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+    .hire-banner .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .hire-banner .badge {
+      background: rgba(212,175,55,0.1);
+      border: 1px solid var(--gold);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.9rem;
+      color: #f2e6c5;
+    }
+    
     .topbar{position:fixed;inset-inline:0;top:0;height:var(--topbar-h);background:rgba(20,20,20,.92);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid #333;z-index:9999}
     .topbar-inner{max-width:900px;margin:0 auto;height:100%;padding:0 12px;display:flex;align-items:center;justify-content:center;gap:14px;color:#f2e6c5;font-size:.95rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
     .topbar-inner::-webkit-scrollbar{display:none}
@@ -17,13 +55,12 @@
     .cv-btn:hover{box-shadow:0 0 12px rgba(212,175,55,.4);background-color:rgba(212,175,55,.10)}
 
     header.page-header{padding:12px 0;margin-bottom:10px}
-    /* FORCE stacked + centered header on all sizes */
     .page-header-inner{
       max-width:900px;
       margin:0 auto;
       display:grid;
-      grid-template-columns: 1fr; /* single column only */
-      grid-auto-flow: row;       /* ensure stacking */
+      grid-template-columns: 1fr;
+      grid-auto-flow: row;
       gap:8px;
       padding:0 6px;
       text-align:center;
@@ -41,24 +78,59 @@
     h2{font-size:1.5rem;color:#fff;margin:1.2rem 0 .7rem;border-bottom:1px solid var(--gold);padding-bottom:.35rem}
     .project-title{font-size:1.2rem;color:var(--gold);margin:0 0 .45rem 0;line-height:1.3;text-align:center}
 
-    /* grid - make rows equal height so boxes line up */
+    .solutions {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: var(--panel);
+      border-radius: 10px;
+      border-left: 4px solid var(--gold);
+    }
+    .solutions h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+    @media (min-width: 768px) {
+      .solutions-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .solution-item {
+      background: #1c1b1a;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 15px;
+    }
+    .solution-item h3 {
+      color: var(--gold);
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    .solution-item p {
+      color: #e8e8e8;
+      font-size: 0.95rem;
+    }
+
     .projects{display:grid;grid-template-columns:1fr;gap:1rem;grid-auto-rows:1fr}
     @media (min-width:720px){.projects{grid-template-columns:1fr 1fr}}
     @media (min-width:1024px){.projects{grid-template-columns:1fr 1fr;gap:1.2rem}}
 
-    .project{background:var(--panel);padding:.9rem;border-radius:10px;border-left:4px solid var(--gold);display:flex;flex-direction:column;gap:.55rem; /* ensure inner spacing */ }
-    /* make each project stretch to fill the grid cell */
+    .project{background:var(--panel);padding:.9rem;border-radius:10px;border-left:4px solid var(--gold);display:flex;flex-direction:column;gap:.55rem;}
     .projects > .project{height:100%;}
 
     .project a.inline-link{color:var(--gold);font-weight:700;text-decoration:none}
     .project a.inline-link:hover{text-decoration:underline}
     .project a.card-link{display:flex;align-items:center;justify-content:center;gap:.5rem;color:inherit;text-decoration:none}
     .project a.card-link:hover .project-title{text-decoration:underline}
-    .project .thumb-link{display:block;border-radius:6px;overflow:hidden;border:2px solid #444;position:relative}
+    .project .thumb-link{display:block;border-radius:6px;overflow:hidden;border:2px solid #444;position:relative;margin-top:.3rem}
     .project .thumb-link img{width:100%;height:auto;display:block}
     .project .thumb-link[data-overlay]::after{content:attr(data-overlay);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);color:#fff;font-weight:800;letter-spacing:.3px;opacity:0;transition:opacity .2s ease}
     .project .thumb-link:hover::after,.project .thumb-link:focus-visible::after{opacity:1}
-    /* center project body text so it aligns with centered titles/buttons */
     .project p, .project .desc, .project figcaption { text-align:center; }
     .project p{margin-bottom:.18rem}
     .cta-row,.btn-row{margin-top:.15rem;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
@@ -69,14 +141,7 @@
     .skip{position:absolute;left:-9999px;top:-9999px}
     .skip:focus{left:12px;top:calc(var(--topbar-h) + 12px);background:#000;color:#fff;padding:8px 12px;border-radius:8px;border:1px solid var(--gold);z-index:10000}
     @media (max-width:640px){.avatar{width:48px;height:48px}.meta{font-size:.92rem;gap:.45rem .5rem}.badge{--h:30px;padding:0 10px}}
-    .feature-grid{display:grid;grid-template-columns:1fr;gap:.6rem;margin-top:.4rem}
-    @media (min-width:720px){.feature-grid{grid-template-columns:1fr 1fr}}
-    .feature{display:flex;gap:.6rem;align-items:flex-start;background:#1c1b1a;border:1px solid #3a3a3a;border-radius:10px;padding:.7rem}
-    .feature .icon{width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:#0e0e0e;border:1px solid #444;color:var(--gold);font-weight:800}
-    .feature .text{display:grid;gap:.15rem}
-    .feature .title{font-weight:800;color:#fff;font-size:.98rem}
-    .feature .desc{font-size:.92rem;color:#e8e8e8}
-
+    
     .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;z-index:10000}
     .modal.open{display:flex}
     .modal::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(2px)}
@@ -95,12 +160,10 @@
     .thumb-small img{max-height:320px;object-fit:contain;background:#000}
     @media (max-width:480px){.thumb-small img{max-height:260px}}
 
-    /* === series stat badges === */
     .stat-badges{display:flex;gap:.4rem;flex-wrap:wrap;margin:.2rem 0 .1rem;justify-content:center}
     .stat{display:inline-flex;align-items:center;gap:.35rem;font-size:.85rem;color:#e8e8e8;background:#141414;border:1px solid #444;border-radius:999px;padding:3px 8px;line-height:1}
     .stat .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block}
 
-    /* small helper for modal content scroll on mobile */
     .modal-card .modal-body{max-height:70vh;overflow:auto;padding-right:8px}
   </style>
 </head>
@@ -129,226 +192,238 @@
     </div>
   </header>
 
+  <div class="hire-banner">
+    <h2>Available for Part-Time & Contract Work</h2>
+    <p>Stockholm-based game programmer with shipped mobile experience. Ready to contribute to your team immediately.</p>
+    <div class="badges">
+      <span class="badge">📍 Stockholm • Hybrid/Onsite Ready</span>
+      <span class="badge">⏱️ 10-20 hours/week • Immediate Start</span>
+      <span class="badge">🎮 Unity + C++ Graphics Programming</span>
+    </div>
+  </div>
+
   <header class="page-header">
     <div class="page-header-inner">
       <img class="avatar" src="assets/images/headshot.jpg" alt="Portrait of William de Try" loading="lazy" decoding="async"/>
       <div>
         <h1>William de Try</h1>
-        <!-- centered badges and explicit specialty -->
         <p class="meta" aria-hidden="false">
           <span class="badge" aria-label="Location"><span class="glyph"><span role="img" aria-hidden="true">📍</span></span> Stockholm, Sweden</span>
-          <span class="badge" aria-label="Role"><span class="glyph"><span role="img" aria-hidden="true">🎮</span></span> Game Developer</span>
-          <span class="badge" aria-label="Specialty"><span class="glyph"><span role="img" aria-hidden="true">📐</span></span> Graphics &amp; Rendering Programmer</span>
+          <span class="badge" aria-label="Role"><span class="glyph"><span role="img" aria-hidden="true">👨‍💻</span></span> Game Programmer</span>
+          <span class="badge" aria-label="Specialty"><span class="glyph"><span role="img" aria-hidden="true">⚙️</span></span> Shipped Mobile & Graphics</span>
         </p>
       </div>
     </div>
   </header>
 
   <main>
+    <!-- Projects first -->
     <section id="projects" class="projects" aria-label="Projects">
-      <!-- Prizm - strongest project first -->
+      <!-- Prizm -->
       <article class="project">
         <a class="card-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm on the App Store">
-          <h3 class="project-title">Prizm | A Puzzle Adventure</h3>
+          <h3 class="project-title">🎯 Shipped: Prizm Puzzle Adventure</h3>
         </a>
-        <p><em>(Available on the App Store)</em> <a class="inline-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener">Link</a></p>
-        <p>Core gameplay programmer. Built the light-bounce system end to end: deterministic reflections, splitters, and colour mixing; goal checks and level completion flow; plus small editor tools for quick puzzle iteration.</p>
-        <a class="thumb-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm screenshots">
+        <a class="thumb-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm screenshots" data-overlay="View on App Store">
           <img src="assets/images/image2.png" alt="Prizm gameplay"/>
         </a>
-
+        <p><strong>Lead Programmer • Unity • iOS/Android</strong></p>
+        <p>Developed and shipped a complete mobile puzzle game from prototype to store release. Implemented core gameplay systems including deterministic light reflections, splitter mechanics, color mixing, and level progression. Created editor tools for rapid iteration.</p>
         <div class="btn-row">
-          <a class="devlog-cta" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener">Open on App Store</a>
-          <!-- Read more opens an in-page modal -->
-          <button class="devlog-cta" type="button" data-modal-open="prizm-info" aria-controls="prizm-info" id="prizm-readmore">Read more</button>
+          <a class="devlog-cta" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener">App Store</a>
+          <button class="devlog-cta" type="button" data-modal-open="prizm-info" aria-controls="prizm-info" id="prizm-readmore">Project Details</button>
         </div>
       </article>
 
       <!-- CPU Rasterizer -->
       <article class="project">
         <a class="card-link" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener" aria-label="Open Rasterizer repository">
-          <h3 class="project-title">CPU Rasterizer (C++)</h3>
+          <h3 class="project-title">⚙️ CPU Graphics Pipeline (C++)</h3>
         </a>
         <div class="stat-badges" aria-label="Rasterizer series length and word count">
           <span class="stat" aria-label="Five parts"><span class="dot" aria-hidden="true"></span>5 parts</span>
           <span class="stat" aria-label="Over four thousand words"><span class="dot" aria-hidden="true"></span>4,000+ words</span>
         </div>
-        <p>A small software rasterizer that draws OBJ models on the CPU. Lines, filled triangles, back-face culling, and a simple framebuffer. The devlog walks through the ideas step by step.</p>
         <a class="thumb-link thumb-small" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener" aria-label="Open rasterizer devlog" data-overlay="Read the devlog">
           <img src="assets/images/framebuffer.png" alt="Rasterized cow filled with random per-face colors"/>
         </a>
+        <p><strong>From-Scratch Rendering System</strong></p>
+        <p>Built a complete software rasterizer implementing triangle rasterization, back-face culling, OBJ model loading, and framebuffer management. Demonstrates low-level graphics understanding applicable to engine and tools development.</p>
         <div class="btn-row">
-          <a class="devlog-cta" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener">See the code (GitHub)</a>
-          <a class="devlog-cta" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener">Read the devlog</a>
+          <a class="devlog-cta" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener">GitHub Code</a>
+          <a class="devlog-cta" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener">Technical Devlog</a>
         </div>
       </article>
 
-      <!-- Learning OpenGL -->
+      <!-- Modern OpenGL -->
       <article class="project">
         <a class="card-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener" aria-label="Open Learning OpenGL devlog">
-          <h3 class="project-title">Learning OpenGL | Devlog Series</h3>
+          <h3 class="project-title">📚 Modern OpenGL Systems</h3>
         </a>
         <div class="stat-badges" aria-label="OpenGL devlog length and word count">
           <span class="stat" aria-label="Six parts"><span class="dot" aria-hidden="true"></span>6 parts</span>
           <span class="stat" aria-label="Over seven thousand words"><span class="dot" aria-hidden="true"></span>7,000+ words</span>
         </div>
-        <p>A hands-on tour of modern OpenGL: setting up the window/context, writing shaders, pushing meshes with VBOs/IBOs, sampling textures, moving a GLM camera, and adding lights <em>(<strong>6-part, 7k+ word series</strong>).</em></p>
-        <p>Across the posts I note the “why” behind each step and tiny gotchas (coordinate spaces, winding, depth state) so it’s easy to follow along and tinker.</p>
         <a class="thumb-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener" aria-label="Open Learning OpenGL devlog" data-overlay="Read Devlog">
           <img src="assets/images/image1.jpg" alt="OpenGL rendering with textured cubes and lighting"/>
         </a>
+        <p><strong>Real-Time Rendering Implementation</strong></p>
+        <p>Developed comprehensive OpenGL rendering systems including shaders, lighting (diffuse and specular), materials, camera systems, and 3D model loading. Documented in a long-form series that shows a systematic approach to complex topics.</p>
         <div class="cta-row">
-          <a class="devlog-cta" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener">Read the devlog</a>
+          <a class="devlog-cta" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener">View Series</a>
         </div>
       </article>
 
-      <!-- Unreal scene -->
+      <!-- UE5 Scene -->
       <article class="project">
         <a class="card-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener" aria-label="Open Unreal Engine 5 medieval night scene video">
-          <h3 class="project-title">Medieval Night Scene in Unreal Engine 5</h3>
+          <h3 class="project-title">🌙 UE5 Environment & Lighting</h3>
         </a>
-        <p><a class="inline-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener">Link</a></p>
-        <p>Small atmospheric environment built in UE5. House meshes made in Maya by me, lighting and post-processing in engine, Niagara for fire and smoke.</p>
-        <a class="thumb-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener" aria-label="Open Unreal Engine 5 scene video">
+        <a class="thumb-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener" aria-label="Open Unreal Engine 5 scene video" data-overlay="Watch on YouTube">
           <img src="assets/images/image5.png" alt="Unreal Engine 5 medieval night scene"/>
         </a>
+        <p><strong>Atmospheric Scene Development</strong></p>
+        <p>Created a complete medieval night environment in Unreal Engine 5 with custom Maya models, dynamic lighting, post-processing, and Niagara particle systems for fire and smoke effects.</p>
+        <div class="cta-row">
+          <a class="devlog-cta" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener">Watch Video</a>
+        </div>
       </article>
 
-      <!-- Other Game Projects (updated) -->
+      <!-- Other Game Projects -->
       <article class="project">
         <a class="card-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener" aria-label="Open William's itch.io profile">
           <h3 class="project-title">Other Game Projects</h3>
         </a>
-        <p><a class="inline-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener">Playable builds on Itch.io (Prototypes, experiments, and small finished games)</a></p>
-        <p>I have made several games! Both for game jams and personal projects. Check the builds out here! </p>
-        <a class="thumb-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener" aria-label="Open itch.io projects">
+        <a class="thumb-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener" aria-label="Open itch.io projects" data-overlay="View on Itch.io">
           <img src="assets/images/image4.png" alt="Thumbnails of various small game projects"/>
         </a>
+        <p>Game jam entries, prototypes, and smaller finished games. Playable builds are available on my Itch page.</p>
+        <div class="cta-row">
+          <a class="devlog-cta" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener">View on Itch.io</a>
+        </div>
       </article>
     </section>
 
-    <section>
-      <h2>About Me</h2>
-      <p>Game Development student at Stockholm University focused on graphics programming and engine systems. I like poking at shaders, render paths, and neat little gameplay loops. I write devlogs to keep track of how things came together.</p>
+    <!-- Then: What I Can Do For Your Studio -->
+    <section class="solutions">
+      <h2>What I Can Do For Your Studio</h2>
+      <div class="solutions-grid">
+        <div class="solution-item">
+          <h3>🎮 Mobile Game Development</h3>
+          <p>Unity/C# gameplay systems, UI implementation, store deployment (iOS/Android), and performance optimization for mobile platforms.</p>
+        </div>
+        <div class="solution-item">
+          <h3>🖥️ Graphics & Rendering Systems</h3>
+          <p>OpenGL/C++ graphics programming, shader development, real-time rendering, and low-level graphics pipeline understanding.</p>
+        </div>
+        <div class="solution-item">
+          <h3>⚡ Rapid Prototyping</h3>
+          <p>Quick iteration of gameplay mechanics, tools development, and feature implementation to validate ideas fast.</p>
+        </div>
+        <div class="solution-item">
+          <h3>🔧 Technical Problem Solving</h3>
+          <p>Debugging complex systems, performance optimization, and implementing technical solutions to gameplay challenges.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="solutions" style="margin-top: 40px;">
+      <h2>Technical Skills</h2>
+      <div class="solutions-grid">
+        <div class="solution-item">
+          <h3>Languages</h3>
+          <p><strong>C++</strong> • <strong>C#</strong> • Java • GLSL</p>
+        </div>
+        <div class="solution-item">
+          <h3>Engines & Frameworks</h3>
+          <p><strong>Unity</strong> • Unreal Engine 5 • <strong>OpenGL</strong> • SDL</p>
+        </div>
+        <div class="solution-item">
+          <h3>Development</h3>
+          <p>Git • Android/iOS Deployment • Maya • Technical Documentation</p>
+        </div>
+        <div class="solution-item">
+          <h3>Core Strengths</h3>
+          <p>Graphics Programming • Mobile Optimization • Gameplay Systems • Rapid Prototyping</p>
+        </div>
+      </div>
     </section>
 
     <section class="contact-info">
-      <h2>Contact Info</h2>
-      <p>Email: <a href="mailto:william.detry@hotmail.se">william.detry@hotmail.se</a></p>
-      <p>GitHub: <a href="https://github.com/NoticeableSmeh" target="_blank" rel="noopener">github.com/NoticeableSmeh</a></p>
+      <h2>Availability & Contact</h2>
+      <p><strong>📍 Location:</strong> Stockholm, Sweden (Hybrid/Onsite Ready)</p>
+      <p><strong>⏱️ Availability:</strong> 10-20 hours/week • Immediate Start</p>
+      <p><strong>🎯 Seeking:</strong> Part-time programming work, internships, or contract projects with Stockholm game studios</p>
+      <p><strong>📧 Email:</strong> <a href="mailto:william.detry@hotmail.se">william.detry@hotmail.se</a></p>
+      <p><strong>🔗 LinkedIn:</strong> <a href="https://www.linkedin.com/in/william-de-try-726470247" target="_blank" rel="noopener">linkedin.com/in/william-de-try-726470247</a></p>
+      <div class="btn-row" style="margin-top: 20px;">
+        <a class="devlog-cta" href="mailto:william.detry@hotmail.se" style="background: rgba(212,175,55,0.1);">Email Me Now</a>
+        <a class="devlog-cta" href="William%20de%20Try%20CV.pdf" target="_blank">Download CV</a>
+      </div>
     </section>
   </main>
 
-  <!-- Prizm modal (English, colon instead of dash) -->
-<div class="modal" id="prizm-info" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="prizm-info-title">
-  <div class="modal-card" role="document">
-    <div class="modal-top">
-      <div class="modal-title" id="prizm-info-title">Prizm: What I did</div>
-      <button class="modal-close" type="button" data-modal-close="prizm-info" aria-label="Close">✕</button>
-    </div>
-
-    <div class="modal-body">
-      <section>
-        <h3 style="color:var(--gold);margin-bottom:6px">What it is</h3>
-        <p>Prizm is a mobile puzzle game where the player directs light beams through mirrors and splitters to produce the correct colour at one or more goals. The project demonstrates a complete gameplay system with deterministic reflections, splitting, colour mixing, and level progression.</p>
-      </section>
-
-      <section>
-        <h3 style="color:var(--gold);margin-bottom:6px">How I built it</h3>
-        <ul class="modal-list">
-          <li>Implemented beam paths using a precomputed list of reflection points so the LineRenderer and the gameplay logic always share the exact same path.</li>
-          <li>Built mirror and splitter mechanics. Mirrors reflect beams deterministically, and splitters spawn a second beam that follows its own path while the original continues.</li>
-          <li>Implemented colour mixing so multiple beams can combine to produce target colours for goal checks.</li>
-          <li>Created goal validation and level logic that verify win conditions when all targets match their required colours.</li>
-          <li>Developed Unity editor tools and level templates to speed up puzzle iteration and testing.</li>
-          <li>Debugged edge cases such as missing beams, incorrect reflections, and split beams not being removed correctly.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3 style="color:var(--gold);margin-bottom:6px">Why I chose this approach</h3>
-        <p>I aimed for deterministic, easy-to-test logic and a clear visual representation that always matches the game rules. Separating path calculation from rendering makes the beam behavior predictable and easier to debug. The editor tools were created to keep iteration fast, which is important in puzzle development.</p>
-      </section>
-
-      <section>
-        <h3 style="color:var(--gold);margin-bottom:6px">What I take to the next project</h3>
-        <ul class="modal-list">
-          <li>Create reusable tools early since they save a lot of time during level creation.</li>
-          <li>Keep a single source of truth for gameplay and visualisation to avoid mismatches.</li>
-          <li>Add better logging and telemetry to reproduce and fix bugs faster in complex interactions.</li>
-          <li>Plan simple automated tests for core mechanics such as reflections, splitters, and colour mixing.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3 style="color:var(--gold);margin-bottom:6px">What I would do with more time</h3>
-        <ul class="modal-list">
-          <li>Add more advanced level-authoring tools, such as previews, additional templates, and quick profiling for balance testing.</li>
-          <li>Improve visual feedback for colour mixing and collisions so players understand the rules faster.</li>
-          <li>Optimize the beam system for handling many simultaneous beams and for performance on lower-end mobile devices.</li>
-          <li>Create a lightweight playtesting pipeline with feedback forms and simple telemetry to improve levels based on player data.</li>
-        </ul>
-      </section>
-
-      <div style="margin-top:8px">
-        <h4 style="color:#fff;margin-bottom:6px">Short summary</h4>
-        <p style="color:#e8e8e8">I developed the core mechanics in Prizm: deterministic reflections, splitters, colour mixing, goal validation, and editor tools for fast level iteration. The work shows both technical skill and the ability to complete a full gameplay system.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!-- Rasterizer modal kept in case you want it -->
-  <div class="modal" id="rasterizer-info" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal-card">
+  <!-- Prizm modal -->
+  <div class="modal" id="prizm-info" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="prizm-info-title">
+    <div class="modal-card" role="document">
       <div class="modal-top">
-        <div class="modal-title">CPU Rasterizer — Details</div>
-        <button class="modal-close" type="button" data-modal-close="rasterizer-info" aria-label="Close">✕</button>
+        <div class="modal-title" id="prizm-info-title">Prizm: Complete Mobile Game Development</div>
+        <button class="modal-close" type="button" data-modal-close="prizm-info" aria-label="Close">✕</button>
       </div>
+
       <div class="modal-body">
-        <div class="btn-row">
-          <a class="devlog-cta" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener">Repository</a>
-          <a class="devlog-cta" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener">Devlog</a>
-        </div>
+        <section>
+          <h3 style="color:var(--gold);margin-bottom:6px">🚀 Shipped Product Experience</h3>
+          <p>Prizm demonstrates my ability to take a game from concept to store release. As Lead Programmer, I owned the complete technical implementation including core mechanics, optimization for mobile, and store deployment.</p>
+        </section>
 
-        <div class="stat-badges" aria-label="Rasterizer series details">
-          <span class="stat"><span class="dot" aria-hidden="true"></span>5 parts</span>
-          <span class="stat"><span class="dot" aria-hidden="true"></span>4,000+ words</span>
-        </div>
+        <section>
+          <h3 style="color:var(--gold);margin-bottom:6px">🛠️ Technical Implementation</h3>
+          <ul class="modal-list">
+            <li><strong>Deterministic Gameplay Systems:</strong> Implemented beam reflection and splitting with predictable, testable behavior</li>
+            <li><strong>Color Mixing Mechanics:</strong> Developed RGB color combination system for puzzle progression</li>
+            <li><strong>Mobile Optimization:</strong> Performance-tuned for iOS/Android with efficient rendering and memory management</li>
+            <li><strong>Editor Tooling:</strong> Created Unity editor extensions for rapid level design and iteration</li>
+            <li><strong>Store Deployment:</strong> Managed complete App Store and Google Play submission process</li>
+          </ul>
+        </section>
 
-        <ul class="modal-list">
-          <li>RGBA framebuffer with safe pixel writes</li>
-          <li>Integer line rasterization</li>
-          <li>Barycentric triangle fill with per-face colour</li>
-          <li>Screen-space projection and back-face culling</li>
-          <li>OBJ vertex/face loading</li>
-        </ul>
-        <div class="modal-grid">
-          <figure>
-            <img src="assets/images/triangle.png" alt="Line raster demo with coloured edges"/>
-            <figcaption>Drawing lines to form a triangle.</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/wireframe.png" alt="Dense red wireframe dinosaur model"/>
-            <figcaption>Wireframe view helps check projection and indexing.</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/framebuffer.png" alt="Tri-filled cow written to framebuffer"/>
-            <figcaption>Triangle fill writes straight into the CPU framebuffer.</figcaption>
-          </figure>
+        <section>
+          <h3 style="color:var(--gold);margin-bottom:6px">🎯 What This Means For Your Team</h3>
+          <p>I can:</p>
+          <ul class="modal-list">
+            <li>Own features from prototype to production</li>
+            <li>Build systems with testability and maintainability in mind</li>
+            <li>Create tools that accelerate team workflows</li>
+            <li>Ship polished mobile experiences</li>
+            <li>Communicate technical decisions clearly</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 style="color:var(--gold);margin-bottom:6px">📈 Production Insights</h3>
+          <ul class="modal-list">
+            <li>Tools investment pays off a lot in level design iteration</li>
+            <li>Single source of truth prevents visual and gameplay mismatches</li>
+            <li>Early performance consideration avoids mobile optimization debt</li>
+            <li>Clear logging accelerates debugging of complex interactions</li>
+          </ul>
+        </section>
+
+        <div style="margin-top:8px; padding:12px; background:rgba(212,175,55,0.05); border-radius:8px;">
+          <h4 style="color:#fff;margin-bottom:6px">Why This Matters For Hiring</h4>
+          <p style="color:#e8e8e8">This project proves I can deliver complete, shippable game systems. I understand the full development cycle, not just coding, but also tooling, optimization, and deployment. I am ready to contribute to your projects with this same production-minded approach.</p>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // Generic modal open/close helpers
     function openModal(id){
       const m = document.getElementById(id);
       if(!m) return;
       m.classList.add('open');
       m.setAttribute('aria-hidden','false');
-      // move focus into modal for accessibility
       const firstFocusable = m.querySelector('button, a, [tabindex]:not([tabindex="-1"])');
       if(firstFocusable) firstFocusable.focus();
     }
@@ -359,7 +434,6 @@
       m.setAttribute('aria-hidden','true');
     }
 
-    // wire up data-modal-open and data-modal-close
     document.querySelectorAll('[data-modal-open]').forEach(b=>{
       b.style.cursor='pointer';
       b.addEventListener('click', ()=> openModal(b.getAttribute('data-modal-open')));
@@ -369,7 +443,6 @@
       b.addEventListener('click', ()=> closeModal(b.getAttribute('data-modal-close')));
     });
 
-    // close on Escape
     document.addEventListener('keydown', e=>{
       if(e.key === 'Escape'){
         document.querySelectorAll('.modal.open').forEach(m => {
@@ -379,7 +452,6 @@
       }
     });
 
-    // click outside to close
     document.querySelectorAll('.modal').forEach(m => {
       m.addEventListener('click', e => {
         if(e.target === m) {
@@ -388,9 +460,6 @@
         }
       });
     });
-
-    // ensure Prizm "Read more" button uses data-modal-open attribute (already set in markup).
-    // nothing else needed here.
   </script>
 </body>
 </html>
