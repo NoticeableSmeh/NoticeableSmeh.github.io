@@ -219,90 +219,151 @@
   <main>
     <!-- Projects first -->
     <section id="projects" class="projects" aria-label="Projects">
-      <!-- Prizm -->
-      <article class="project">
-        <a class="card-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm on the App Store">
-          <h3 class="project-title">🎯 Shipped: Prizm Puzzle Adventure</h3>
-        </a>
-        <a class="thumb-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" aria-label="Open Prizm screenshots" data-overlay="View on App Store">
-          <img src="assets/images/image2.png" alt="Prizm gameplay"/>
-        </a>
-        <p><strong>Lead Programmer • Unity • iOS/Android</strong></p>
-        <p>Developed and shipped a complete mobile puzzle game from prototype to store release. Implemented core gameplay systems including deterministic light reflections, splitter mechanics, color mixing, and level progression. Created editor tools for rapid iteration.</p>
-        <div class="btn-row">
-          <a class="devlog-cta" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener">App Store</a>
-          <button class="devlog-cta" type="button" data-modal-open="prizm-info" aria-controls="prizm-info" id="prizm-readmore">Project Details</button>
-        </div>
-      </article>
 
-      <!-- CPU Rasterizer -->
-      <article class="project">
-        <a class="card-link" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener" aria-label="Open Rasterizer repository">
-          <h3 class="project-title">⚙️ CPU Graphics Pipeline (C++)</h3>
-        </a>
-        <div class="stat-badges" aria-label="Rasterizer series length and word count">
-          <span class="stat" aria-label="Five parts"><span class="dot" aria-hidden="true"></span>5 parts</span>
-          <span class="stat" aria-label="Over four thousand words"><span class="dot" aria-hidden="true"></span>4,000+ words</span>
-        </div>
-        <a class="thumb-link thumb-small" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener" aria-label="Open rasterizer devlog" data-overlay="Read the devlog">
-          <img src="assets/images/framebuffer.png" alt="Rasterized cow filled with random per-face colors"/>
-        </a>
-        <p><strong>From-Scratch Rendering System</strong></p>
-        <p>Built a complete software rasterizer implementing triangle rasterization, back-face culling, OBJ model loading, and framebuffer management. Demonstrates low-level graphics understanding applicable to engine and tools development.</p>
-        <div class="btn-row">
-          <a class="devlog-cta" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener">GitHub Code</a>
-          <a class="devlog-cta" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener">Technical Devlog</a>
-        </div>
-      </article>
+  <!-- 1. CPlusEngine -->
+  <article class="project">
+    <a class="card-link" href="https://github.com/NoticeableSmeh/CPlusEngine" target="_blank" rel="noopener">
+      <h3 class="project-title">🧠 CPlusEngine | Custom C++ Game Engine</h3>
+    </a>
 
-      <!-- Modern OpenGL -->
-      <article class="project">
-        <a class="card-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener" aria-label="Open Learning OpenGL devlog">
-          <h3 class="project-title">📚 Modern OpenGL Systems</h3>
-        </a>
-        <div class="stat-badges" aria-label="OpenGL devlog length and word count">
-          <span class="stat" aria-label="Six parts"><span class="dot" aria-hidden="true"></span>6 parts</span>
-          <span class="stat" aria-label="Over seven thousand words"><span class="dot" aria-hidden="true"></span>7,000+ words</span>
-        </div>
-        <a class="thumb-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener" aria-label="Open Learning OpenGL devlog" data-overlay="Read Devlog">
-          <img src="assets/images/image1.jpg" alt="OpenGL rendering with textured cubes and lighting"/>
-        </a>
-        <p><strong>Real-Time Rendering Implementation</strong></p>
-        <p>Developed comprehensive OpenGL rendering systems including shaders, lighting (diffuse and specular), materials, camera systems, and 3D model loading. Documented in a long-form series that shows a systematic approach to complex topics.</p>
-        <div class="cta-row">
-          <a class="devlog-cta" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener">View Series</a>
-        </div>
-      </article>
+    <div class="stat-badges">
+      <span class="stat"><span class="dot"></span>C++</span>
+      <span class="stat"><span class="dot"></span>SDL3</span>
+      <span class="stat"><span class="dot"></span>CMake</span>
+      <span class="stat"><span class="dot"></span>Engine Architecture</span>
+    </div>
 
-      <!-- UE5 Scene -->
-      <article class="project">
-        <a class="card-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener" aria-label="Open Unreal Engine 5 medieval night scene video">
-          <h3 class="project-title">🌙 UE5 Environment & Lighting</h3>
-        </a>
-        <a class="thumb-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener" aria-label="Open Unreal Engine 5 scene video" data-overlay="Watch on YouTube">
-          <img src="assets/images/image5.png" alt="Unreal Engine 5 medieval night scene"/>
-        </a>
-        <p><strong>Atmospheric Scene Development</strong></p>
-        <p>Created a complete medieval night environment in Unreal Engine 5 with custom Maya models, dynamic lighting, post-processing, and Niagara particle systems for fire and smoke effects.</p>
-        <div class="cta-row">
-          <a class="devlog-cta" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener">Watch Video</a>
-        </div>
-      </article>
+    <a class="thumb-link thumb-small" href="https://github.com/NoticeableSmeh/CPlusEngine" target="_blank" rel="noopener" data-overlay="View on GitHub">
+      <img src="assets/images/CPLUSENGINE.png" alt="CPlusEngine running a 2D SDL game"/>
+    </a>
 
-      <!-- Other Game Projects -->
-      <article class="project">
-        <a class="card-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener" aria-label="Open William's itch.io profile">
-          <h3 class="project-title">Other Game Projects</h3>
-        </a>
-        <a class="thumb-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener" aria-label="Open itch.io projects" data-overlay="View on Itch.io">
-          <img src="assets/images/image4.png" alt="Thumbnails of various small game projects"/>
-        </a>
-        <p>Game jam entries, prototypes, and smaller finished games. Playable builds are available on my Itch page.</p>
-        <div class="cta-row">
-          <a class="devlog-cta" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener">View on Itch.io</a>
-        </div>
-      </article>
-    </section>
+    <p><strong>From-scratch engine architecture</strong></p>
+    <p>
+      A custom-built C++ game engine with clear separation between engine and game code.
+      Includes scene management, sprite and text rendering, audio, and a structured SDL3-based game loop.
+    </p>
+
+    <div class="btn-row">
+      <a class="devlog-cta" href="https://github.com/NoticeableSmeh/CPlusEngine" target="_blank" rel="noopener">GitHub Code</a>
+    </div>
+  </article>
+
+  <!-- 2. CPU Rasterizer -->
+  <article class="project">
+    <a class="card-link" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener">
+      <h3 class="project-title">⚙️ CPU Graphics Pipeline (C++)</h3>
+    </a>
+
+    <div class="stat-badges">
+      <span class="stat"><span class="dot"></span>5 parts</span>
+      <span class="stat"><span class="dot"></span>4,000+ words</span>
+    </div>
+
+    <a class="thumb-link thumb-small" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener">
+      <img src="assets/images/framebuffer.png" alt="Software rasterizer output"/>
+    </a>
+
+    <p><strong>From-scratch rendering system</strong></p>
+    <p>
+      Complete CPU-based rasterizer with triangle rasterization,
+      back-face culling, depth buffering, and OBJ loading.
+    </p>
+
+    <div class="btn-row">
+      <a class="devlog-cta" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank">GitHub Code</a>
+      <a class="devlog-cta" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank">Technical Devlog</a>
+    </div>
+  </article>
+
+  <!-- 3. Modern OpenGL -->
+  <article class="project">
+    <a class="card-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener">
+      <h3 class="project-title">📚 Modern OpenGL Systems</h3>
+    </a>
+
+    <div class="stat-badges">
+      <span class="stat"><span class="dot"></span>6 parts</span>
+      <span class="stat"><span class="dot"></span>7,000+ words</span>
+    </div>
+
+    <a class="thumb-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener">
+      <img src="assets/images/image1.jpg" alt="OpenGL rendering"/>
+    </a>
+
+    <p><strong>Real-time rendering implementation</strong></p>
+    <p>
+      Shaders, lighting, materials, camera systems, and model loading,
+      documented in a long-form technical series.
+    </p>
+
+    <div class="cta-row">
+      <a class="devlog-cta" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank">View Series</a>
+    </div>
+  </article>
+
+  <!-- 4. Prizm -->
+  <article class="project">
+    <a class="card-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener">
+      <h3 class="project-title">🎯 Shipped: Prizm Puzzle Adventure</h3>
+    </a>
+
+    <a class="thumb-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" data-overlay="View on App Store">
+      <img src="assets/images/image2.png" alt="Prizm gameplay"/>
+    </a>
+
+    <p><strong>Lead Programmer • Unity • iOS/Android</strong></p>
+    <p>
+      Developed and shipped a complete mobile puzzle game from prototype to store release.
+      Implemented deterministic light mechanics, color mixing, and editor tooling.
+    </p>
+
+    <div class="btn-row">
+      <a class="devlog-cta" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank">App Store</a>
+      <button class="devlog-cta" type="button" data-modal-open="prizm-info">Project Details</button>
+    </div>
+  </article>
+
+  <!-- 5. UE5 -->
+  <article class="project">
+    <a class="card-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener">
+      <h3 class="project-title">🌙 UE5 Environment & Lighting</h3>
+    </a>
+
+    <a class="thumb-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener">
+      <img src="assets/images/image5.png" alt="UE5 scene"/>
+    </a>
+
+    <p><strong>Atmospheric environment</strong></p>
+    <p>
+      Medieval night scene with custom Maya assets,
+      dynamic lighting, post-processing, and Niagara effects.
+    </p>
+
+    <div class="cta-row">
+      <a class="devlog-cta" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank">Watch Video</a>
+    </div>
+  </article>
+
+  <!-- 6. Game Jams -->
+  <article class="project">
+    <a class="card-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener">
+      <h3 class="project-title">Other Game Projects</h3>
+    </a>
+
+    <a class="thumb-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener">
+      <img src="assets/images/image4.png" alt="Game jam projects"/>
+    </a>
+
+    <p>Game jam entries, prototypes, and smaller finished games.</p>
+
+    <div class="cta-row">
+      <a class="devlog-cta" href="https://noticeablesmeh.itch.io/" target="_blank">View on Itch.io</a>
+    </div>
+  </article>
+
+</section>
+
+
 
     <!-- Then: What I Can Do For Your Studio -->
     <section class="solutions">
