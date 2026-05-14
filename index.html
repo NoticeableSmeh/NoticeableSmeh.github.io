@@ -1,516 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="William de Try is a Stockholm-based game programmer focused on Unity, C++, rendering, mobile games, and gameplay systems.">
   <title>William de Try | Game Programmer | Stockholm</title>
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    :root{--gold:#d4af37;--ink:#1c1b1a;--paper:#eae6e1;--panel:#2a2928;--topbar-h:52px}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;color:var(--paper);background-color:var(--ink);max-width:1200px;margin:0 auto;padding:16px;padding-top:calc(var(--topbar-h) + 14px)}
-    
-    .hire-banner {
-      background: linear-gradient(90deg, #1c1b1a 0%, #2a2928 100%);
-      border: 2px solid var(--gold);
-      border-radius: 10px;
-      padding: 14px 20px;
-      margin: 20px auto 30px;
-      max-width: 900px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(212,175,55,0.15);
-    }
-    .hire-banner h2 {
-      color: var(--gold);
-      font-size: 1.4rem;
-      margin-bottom: 8px;
-      border: none;
-    }
-    .hire-banner p {
-      color: #fff;
-      font-size: 1rem;
-      margin-bottom: 12px;
-    }
-    .hire-banner .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-      margin-top: 10px;
-    }
-    .hire-banner .badge {
-      background: rgba(212,175,55,0.1);
-      border: 1px solid var(--gold);
-      border-radius: 20px;
-      padding: 6px 14px;
-      font-size: 0.9rem;
-      color: #f2e6c5;
-    }
-    
-    .topbar{position:fixed;inset-inline:0;top:0;height:var(--topbar-h);background:rgba(20,20,20,.92);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid #333;z-index:9999}
-    .topbar-inner{max-width:900px;margin:0 auto;height:100%;padding:0 12px;display:flex;align-items:center;justify-content:center;gap:14px;color:#f2e6c5;font-size:.95rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-    .topbar-inner::-webkit-scrollbar{display:none}
-    .topbar a{text-decoration:none;color:inherit;display:inline-flex;align-items:center;gap:8px;flex:0 0 auto}
-    .topbar a:hover{opacity:.85}
-    .cv-btn{border:1px solid var(--gold);border-radius:10px;padding:6px 12px;gap:10px;transition:box-shadow .2s ease,background-color .2s ease,transform .05s ease;color:#f2e6c5;font-weight:700;font-size:.95rem;letter-spacing:.2px}
-    .cv-btn:hover{box-shadow:0 0 12px rgba(212,175,55,.4);background-color:rgba(212,175,55,.10)}
-
-    header.page-header{padding:12px 0;margin-bottom:10px}
-    .page-header-inner{
-      max-width:900px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns: 1fr;
-      grid-auto-flow: row;
-      gap:8px;
-      padding:0 6px;
-      text-align:center;
-      place-items:center;
-      align-items:center;
-    }
-    .avatar{width:56px;height:56px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;box-shadow:0 0 0 3px rgba(212,175,55,.08);margin:0 auto}
-    h1{font-size:clamp(1.3rem,2.5vw,1.6rem);color:#fff;line-height:1.2}
-    .meta{display:flex;flex-wrap:wrap;gap:.5rem .55rem;align-items:center;justify-content:center;font-size:.95rem}
-    .badge{--h:32px;display:inline-flex;align-items:center;gap:.5rem;padding:0 12px;min-height:var(--h);border-radius:999px;font-weight:800;background:#0e0e0e;color:var(--gold);border:1px solid var(--gold);line-height:1;white-space:nowrap}
-    .glyph{width:1.2em;height:1.2em;display:grid;place-items:center;line-height:1}
-    .glyph>span{font-size:1em;line-height:1}
-    .badge:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-
-    h2{font-size:1.5rem;color:#fff;margin:1.2rem 0 .7rem;border-bottom:1px solid var(--gold);padding-bottom:.35rem}
-    .project-title{font-size:1.2rem;color:var(--gold);margin:0 0 .45rem 0;line-height:1.3;text-align:center}
-
-    .solutions {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-      background: var(--panel);
-      border-radius: 10px;
-      border-left: 4px solid var(--gold);
-    }
-    .solutions h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .solutions-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 15px;
-    }
-    @media (min-width: 768px) {
-      .solutions-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    .solution-item {
-      background: #1c1b1a;
-      border: 1px solid #444;
-      border-radius: 8px;
-      padding: 15px;
-    }
-    .solution-item h3 {
-      color: var(--gold);
-      margin-bottom: 8px;
-      font-size: 1.1rem;
-    }
-    .solution-item p {
-      color: #e8e8e8;
-      font-size: 0.95rem;
-    }
-
-    .projects{display:grid;grid-template-columns:1fr;gap:1rem;grid-auto-rows:1fr}
-    @media (min-width:720px){.projects{grid-template-columns:1fr 1fr}}
-    @media (min-width:1024px){.projects{grid-template-columns:1fr 1fr;gap:1.2rem}}
-
-    .project{background:var(--panel);padding:.9rem;border-radius:10px;border-left:4px solid var(--gold);display:flex;flex-direction:column;gap:.55rem;}
-    .projects > .project{height:100%;}
-
-    .project a.inline-link{color:var(--gold);font-weight:700;text-decoration:none}
-    .project a.inline-link:hover{text-decoration:underline}
-    .project a.card-link{display:flex;align-items:center;justify-content:center;gap:.5rem;color:inherit;text-decoration:none}
-    .project a.card-link:hover .project-title{text-decoration:underline}
-    .project .thumb-link{display:block;border-radius:6px;overflow:hidden;border:2px solid #444;position:relative;margin-top:.3rem}
-    .project .thumb-link img{width:100%;height:auto;display:block}
-    .project .thumb-link[data-overlay]::after{content:attr(data-overlay);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);color:#fff;font-weight:800;letter-spacing:.3px;opacity:0;transition:opacity .2s ease}
-    .project .thumb-link:hover::after,.project .thumb-link:focus-visible::after{opacity:1}
-    .project p, .project .desc, .project figcaption { text-align:center; }
-    .project p{margin-bottom:.18rem}
-    .cta-row,.btn-row{margin-top:.15rem;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
-    .devlog-cta{display:inline-block;padding:7px 11px;border:1px solid var(--gold);border-radius:8px;font-weight:700;text-decoration:none;color:var(--gold);background:transparent;cursor:pointer}
-    .contact-info{background:var(--panel);padding:.9rem;border-radius:10px;margin:1.4rem 0}
-    a{color:var(--gold);font-weight:700;text-decoration:none}
-    a:hover{text-decoration:underline}
-    .skip{position:absolute;left:-9999px;top:-9999px}
-    .skip:focus{left:12px;top:calc(var(--topbar-h) + 12px);background:#000;color:#fff;padding:8px 12px;border-radius:8px;border:1px solid var(--gold);z-index:10000}
-    @media (max-width:640px){.avatar{width:48px;height:48px}.meta{font-size:.92rem;gap:.45rem .5rem}.badge{--h:30px;padding:0 10px}}
-    
-    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;z-index:10000}
-    .modal.open{display:flex}
-    .modal::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(2px)}
-    .modal-card{position:relative;background:#121212;border:1px solid var(--gold);border-radius:12px;max-width:960px;width:100%;padding:16px;z-index:1}
-    .modal-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
-    .modal-title{font-weight:800;color:#fff;font-size:1.1rem}
-    .modal-close{background:#000;color:#fff;border:1px solid #444;border-radius:8px;padding:6px 10px;cursor:pointer}
-    .modal-body{display:grid;gap:12px}
-    .modal-grid{display:grid;grid-template-columns:1fr;gap:12px}
-    @media (min-width:860px){.modal-grid{grid-template-columns:1fr 1fr 1fr}}
-    figure{margin:0;display:flex;flex-direction:column;gap:8px}
-    figure img{width:100%;height:auto;border:2px solid #333;border-radius:8px;display:block;background:#000}
-    figcaption{font-size:.92rem;color:#e8e8e8}
-    .modal-list{margin-left:1.1rem}
-
-    .thumb-small img{max-height:320px;object-fit:contain;background:#000}
-    @media (max-width:480px){.thumb-small img{max-height:260px}}
-
-    .stat-badges{display:flex;gap:.4rem;flex-wrap:wrap;margin:.2rem 0 .1rem;justify-content:center}
-    .stat{display:inline-flex;align-items:center;gap:.35rem;font-size:.85rem;color:#e8e8e8;background:#141414;border:1px solid #444;border-radius:999px;padding:3px 8px;line-height:1}
-    .stat .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block}
-
-    .modal-card .modal-body{max-height:70vh;overflow:auto;padding-right:8px}
-  </style>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script defer src="./assets/js/data.js"></script>
+  <script defer src="./assets/js/site.js"></script>
 </head>
-<body>
-  <a class="skip" href="#projects">Skip to projects</a>
-
-  <header class="topbar" role="banner" aria-label="Primary">
-    <div class="topbar-inner">
-      <a class="cv-btn" href="William%20de%20Try%20CV.pdf" target="_blank" rel="noopener" title="View my CV (opens in new tab)"><span>Resume</span></a>
-      <a href="https://www.linkedin.com/in/william-de-try-726470247" target="_blank" rel="noopener" aria-label="William de Try on LinkedIn">
-        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="border-radius:3px;display:block"><rect x="0" y="0" width="24" height="24" rx="4" ry="4" fill="#0A66C2"/><text x="7.5" y="17" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">in</text></svg>
-        <span>LinkedIn</span>
-      </a>
-      <a href="https://github.com/NoticeableSmeh" target="_blank" rel="noopener" aria-label="William de Try on GitHub">
-        <img src="https://cdn.simpleicons.org/github/FFFFFF" alt="GitHub" width="18" height="18" style="display:block"/>
-        <span>GitHub</span>
-      </a>
-      <a href="mailto:william.detry@hotmail.se" aria-label="Email William de Try">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F2C94C" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.236-7.428 4.57a2 2 0 0 1-2.144 0L3 8.236V6l8.2 5.045a1 1 0 0 0 1.07 0L21 6v2.236Z"/></svg>
-        <span>william.detry@hotmail.se</span>
-      </a>
-      <a href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener" aria-label="William de Try on Itch.io">
-        <img src="https://cdn.simpleicons.org/itchdotio/FA5C5C" alt="Itch.io" width="18" height="18" style="display:block"/>
-        <span>Itch.io</span>
-      </a>
-    </div>
-  </header>
-
-  <header class="page-header">
-    <div class="page-header-inner">
-      <img class="avatar" src="assets/images/headshot.jpg" alt="Portrait of William de Try" loading="lazy" decoding="async"/>
-      <div>
-        <h1>William de Try</h1>
-        <p class="meta" aria-hidden="false">
-          <span class="badge" aria-label="Location"><span class="glyph"><span role="img" aria-hidden="true">📍</span></span> Stockholm, Sweden</span>
-          <span class="badge" aria-label="Role"><span class="glyph"><span role="img" aria-hidden="true">👨‍💻</span></span> Game Programmer</span>
-          <span class="badge" aria-label="Specialty"><span class="glyph"><span role="img" aria-hidden="true">⚙️</span></span> Shipped Mobile & Graphics</span>
-        </p>
-      </div>
-    </div>
-  </header>
+<body data-root=".">
+  <a class="skip-link" href="#projects">Skip to projects</a>
+  <div data-site-header></div>
 
   <main>
-    <!-- Projects first -->
-    <section id="projects" class="projects" aria-label="Projects">
-
-  <!-- 1. CPlusEngine -->
-  <article class="project">
-    <a class="card-link" href="https://github.com/NoticeableSmeh/CPlusEngine" target="_blank" rel="noopener">
-      <h3 class="project-title">🧠 CPlusEngine | Custom C++ Game Engine</h3>
-    </a>
-
-    <div class="stat-badges">
-      <span class="stat"><span class="dot"></span>C++</span>
-      <span class="stat"><span class="dot"></span>SDL3</span>
-      <span class="stat"><span class="dot"></span>CMake</span>
-      <span class="stat"><span class="dot"></span>Engine Architecture</span>
-    </div>
-
-    <a class="thumb-link thumb-small" href="https://github.com/NoticeableSmeh/CPlusEngine" target="_blank" rel="noopener" data-overlay="View on GitHub">
-      <img src="assets/images/CPLUSENGINE.png" alt="CPlusEngine running a 2D SDL game"/>
-    </a>
-
-    <p><strong>From-scratch engine architecture</strong></p>
-    <p>
-      A custom-built C++ game engine with clear separation between engine and game code.
-      Includes scene management, sprite and text rendering, audio, and a structured SDL3-based game loop.
-    </p>
-
-    <div class="btn-row">
-      <a class="devlog-cta" href="https://github.com/NoticeableSmeh/CPlusEngine" target="_blank" rel="noopener">GitHub Code</a>
-    </div>
-  </article>
-
-  <!-- 2. CPU Rasterizer -->
-  <article class="project">
-    <a class="card-link" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank" rel="noopener">
-      <h3 class="project-title">⚙️ CPU Graphics Pipeline (C++)</h3>
-    </a>
-
-    <div class="stat-badges">
-      <span class="stat"><span class="dot"></span>5 parts</span>
-      <span class="stat"><span class="dot"></span>4,000+ words</span>
-    </div>
-
-    <a class="thumb-link thumb-small" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank" rel="noopener">
-      <img src="assets/images/framebuffer.png" alt="Software rasterizer output"/>
-    </a>
-
-    <p><strong>From-scratch rendering system</strong></p>
-    <p>
-      Complete CPU-based rasterizer with triangle rasterization,
-      back-face culling, depth buffering, and OBJ loading.
-    </p>
-
-    <div class="btn-row">
-      <a class="devlog-cta" href="https://github.com/NoticeableSmeh/Rasterizer_Project" target="_blank">GitHub Code</a>
-      <a class="devlog-cta" href="https://dev.to/noticeablesmeh/rasterizer-project-part-1-getting-started-jph" target="_blank">Technical Devlog</a>
-    </div>
-  </article>
-
-  <!-- 3. Modern OpenGL -->
-  <article class="project">
-    <a class="card-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener">
-      <h3 class="project-title">📚 Modern OpenGL Systems</h3>
-    </a>
-
-    <div class="stat-badges">
-      <span class="stat"><span class="dot"></span>6 parts</span>
-      <span class="stat"><span class="dot"></span>7,000+ words</span>
-    </div>
-
-    <a class="thumb-link" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank" rel="noopener">
-      <img src="assets/images/image1.jpg" alt="OpenGL rendering"/>
-    </a>
-
-    <p><strong>Real-time rendering implementation</strong></p>
-    <p>
-      Shaders, lighting, materials, camera systems, and model loading,
-      documented in a long-form technical series.
-    </p>
-
-    <div class="cta-row">
-      <a class="devlog-cta" href="https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o" target="_blank">View Series</a>
-    </div>
-  </article>
-
-  <!-- 4. Prizm -->
-  <article class="project">
-    <a class="card-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener">
-      <h3 class="project-title">🎯 Shipped: Prizm Puzzle Adventure</h3>
-    </a>
-
-    <a class="thumb-link" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank" rel="noopener" data-overlay="View on App Store">
-      <img src="assets/images/image2.png" alt="Prizm gameplay"/>
-    </a>
-
-    <p><strong>Lead Programmer • Unity • iOS/Android</strong></p>
-    <p>
-      Developed and shipped a complete mobile puzzle game from prototype to store release.
-      Implemented deterministic light mechanics, color mixing, and editor tooling.
-    </p>
-
-    <div class="btn-row">
-      <a class="devlog-cta" href="https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB" target="_blank">App Store</a>
-      <button class="devlog-cta" type="button" data-modal-open="prizm-info">Project Details</button>
-    </div>
-  </article>
-
-  <!-- 5. UE5 -->
-  <article class="project">
-    <a class="card-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener">
-      <h3 class="project-title">🌙 UE5 Environment & Lighting</h3>
-    </a>
-
-    <a class="thumb-link" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank" rel="noopener">
-      <img src="assets/images/image5.png" alt="UE5 scene"/>
-    </a>
-
-    <p><strong>Atmospheric environment</strong></p>
-    <p>
-      Medieval night scene with custom Maya assets,
-      dynamic lighting, post-processing, and Niagara effects.
-    </p>
-
-    <div class="cta-row">
-      <a class="devlog-cta" href="https://www.youtube.com/watch?v=aoOSIZdB6iE" target="_blank">Watch Video</a>
-    </div>
-  </article>
-
-  <!-- 6. Game Jams -->
-  <article class="project">
-    <a class="card-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener">
-      <h3 class="project-title">Other Game Projects</h3>
-    </a>
-
-    <a class="thumb-link" href="https://noticeablesmeh.itch.io/" target="_blank" rel="noopener">
-      <img src="assets/images/image4.png" alt="Game jam projects"/>
-    </a>
-
-    <p>Game jam entries, prototypes, and smaller finished games.</p>
-
-    <div class="cta-row">
-      <a class="devlog-cta" href="https://noticeablesmeh.itch.io/" target="_blank">View on Itch.io</a>
-    </div>
-  </article>
-
-</section>
-
-
-
-    <!-- Then: What I Can Do For Your Studio -->
-    <section class="solutions">
-      <h2>What I Can Do For Your Studio</h2>
-      <div class="solutions-grid">
-        <div class="solution-item">
-          <h3>🎮 Mobile Game Development</h3>
-          <p>Unity/C# gameplay systems, UI implementation, store deployment (iOS/Android), and performance optimization for mobile platforms.</p>
+    <section class="hero band">
+      <div class="shell hero__layout">
+        <div class="hero__copy">
+          <p class="eyebrow">Game programmer in Stockholm</p>
+          <h1>William de Try</h1>
+          <p class="hero__lead">
+            I build gameplay systems, graphics experiments, mobile games, and engine-level tools with a practical production mindset.
+          </p>
+          <div class="hero__actions">
+            <a class="button" href="#projects">View Work</a>
+            <a class="button button--quiet" href="mailto:william.detry@hotmail.se">Contact Me</a>
+          </div>
         </div>
-        <div class="solution-item">
-          <h3>🖥️ Graphics & Rendering Systems</h3>
-          <p>OpenGL/C++ graphics programming, shader development, real-time rendering, and low-level graphics pipeline understanding.</p>
+
+        <aside class="profile-summary" aria-label="Profile summary">
+          <img class="profile-summary__image" src="./assets/images/headshot.jpg" alt="Portrait of William de Try" loading="eager" decoding="async">
+          <div>
+            <p class="profile-summary__name">Available 10-20 hours/week</p>
+            <p>Part-time programming work, internships, and contract projects with Stockholm game studios.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="projects" class="band band--muted">
+      <div class="shell">
+        <div class="section-head">
+          <p class="eyebrow">Selected work</p>
+          <h2>Projects That Show How I Think</h2>
+          <p>
+            A smaller front page with room for deeper case studies. Each card opens a dedicated project page with technical notes, process, links, and supporting images.
+          </p>
         </div>
-        <div class="solution-item">
-          <h3>⚡ Rapid Prototyping</h3>
-          <p>Quick iteration of gameplay mechanics, tools development, and feature implementation to validate ideas fast.</p>
-        </div>
-        <div class="solution-item">
-          <h3>🔧 Technical Problem Solving</h3>
-          <p>Debugging complex systems, performance optimization, and implementing technical solutions to gameplay challenges.</p>
+        <div data-project-grid="featured"></div>
+        <div class="section-actions">
+          <a class="button button--quiet" href="./projects/index.html">View All Projects</a>
         </div>
       </div>
     </section>
 
-    <section class="solutions" style="margin-top: 40px;">
-      <h2>Technical Skills</h2>
-      <div class="solutions-grid">
-        <div class="solution-item">
-          <h3>Languages</h3>
-          <p><strong>C++</strong> • <strong>C#</strong> • Java • GLSL</p>
+    <section id="services" class="band">
+      <div class="shell">
+        <div class="section-head">
+          <p class="eyebrow">Studio fit</p>
+          <h2>What I Can Contribute</h2>
         </div>
-        <div class="solution-item">
-          <h3>Engines & Frameworks</h3>
-          <p><strong>Unity</strong> • Unreal Engine 5 • <strong>OpenGL</strong> • SDL</p>
-        </div>
-        <div class="solution-item">
-          <h3>Development</h3>
-          <p>Git • Android/iOS Deployment • Maya • Technical Documentation</p>
-        </div>
-        <div class="solution-item">
-          <h3>Core Strengths</h3>
-          <p>Graphics Programming • Mobile Optimization • Gameplay Systems • Rapid Prototyping</p>
-        </div>
+        <div data-service-grid></div>
       </div>
     </section>
 
-    <section class="contact-info">
-      <h2>Availability & Contact</h2>
-      <p><strong>📍 Location:</strong> Stockholm, Sweden (Hybrid/Onsite Ready)</p>
-      <p><strong>⏱️ Availability:</strong> 10-20 hours/week • Immediate Start</p>
-      <p><strong>🎯 Seeking:</strong> Part-time programming work, internships, or contract projects with Stockholm game studios</p>
-      <p><strong>📧 Email:</strong> <a href="mailto:william.detry@hotmail.se">william.detry@hotmail.se</a></p>
-      <p><strong>🔗 LinkedIn:</strong> <a href="https://www.linkedin.com/in/william-de-try-726470247" target="_blank" rel="noopener">linkedin.com/in/william-de-try-726470247</a></p>
-      <div class="btn-row" style="margin-top: 20px;">
-        <a class="devlog-cta" href="mailto:william.detry@hotmail.se" style="background: rgba(212,175,55,0.1);">Email Me Now</a>
-        <a class="devlog-cta" href="William%20de%20Try%20CV.pdf" target="_blank">Download CV</a>
+    <section id="skills" class="band band--muted">
+      <div class="shell">
+        <div class="section-head">
+          <p class="eyebrow">Technical focus</p>
+          <h2>Skills And Tools</h2>
+        </div>
+        <div data-skill-grid></div>
+      </div>
+    </section>
+
+    <section id="contact" class="band">
+      <div class="shell">
+        <div data-contact-card></div>
       </div>
     </section>
   </main>
 
-  <!-- Prizm modal -->
-  <div class="modal" id="prizm-info" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="prizm-info-title">
-    <div class="modal-card" role="document">
-      <div class="modal-top">
-        <div class="modal-title" id="prizm-info-title">Prizm: Complete Mobile Game Development</div>
-        <button class="modal-close" type="button" data-modal-close="prizm-info" aria-label="Close">✕</button>
-      </div>
-
-      <div class="modal-body">
-        <section>
-          <h3 style="color:var(--gold);margin-bottom:6px">🚀 Shipped Product Experience</h3>
-          <p>Prizm demonstrates my ability to take a game from concept to store release. As Lead Programmer, I owned the complete technical implementation including core mechanics, optimization for mobile, and store deployment.</p>
-        </section>
-
-        <section>
-          <h3 style="color:var(--gold);margin-bottom:6px">🛠️ Technical Implementation</h3>
-          <ul class="modal-list">
-            <li><strong>Deterministic Gameplay Systems:</strong> Implemented beam reflection and splitting with predictable, testable behavior</li>
-            <li><strong>Color Mixing Mechanics:</strong> Developed RGB color combination system for puzzle progression</li>
-            <li><strong>Mobile Optimization:</strong> Performance-tuned for iOS/Android with efficient rendering and memory management</li>
-            <li><strong>Editor Tooling:</strong> Created Unity editor extensions for rapid level design and iteration</li>
-            <li><strong>Store Deployment:</strong> Managed complete App Store and Google Play submission process</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3 style="color:var(--gold);margin-bottom:6px">🎯 What This Means For Your Team</h3>
-          <p>I can:</p>
-          <ul class="modal-list">
-            <li>Own features from prototype to production</li>
-            <li>Build systems with testability and maintainability in mind</li>
-            <li>Create tools that accelerate team workflows</li>
-            <li>Ship polished mobile experiences</li>
-            <li>Communicate technical decisions clearly</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3 style="color:var(--gold);margin-bottom:6px">📈 Production Insights</h3>
-          <ul class="modal-list">
-            <li>Tools investment pays off a lot in level design iteration</li>
-            <li>Single source of truth prevents visual and gameplay mismatches</li>
-            <li>Early performance consideration avoids mobile optimization debt</li>
-            <li>Clear logging accelerates debugging of complex interactions</li>
-          </ul>
-        </section>
-
-        <div style="margin-top:8px; padding:12px; background:rgba(212,175,55,0.05); border-radius:8px;">
-          <h4 style="color:#fff;margin-bottom:6px">Why This Matters For Hiring</h4>
-          <p style="color:#e8e8e8">This project proves I can deliver complete, shippable game systems. I understand the full development cycle, not just coding, but also tooling, optimization, and deployment. I am ready to contribute to your projects with this same production-minded approach.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function openModal(id){
-      const m = document.getElementById(id);
-      if(!m) return;
-      m.classList.add('open');
-      m.setAttribute('aria-hidden','false');
-      const firstFocusable = m.querySelector('button, a, [tabindex]:not([tabindex="-1"])');
-      if(firstFocusable) firstFocusable.focus();
-    }
-    function closeModal(id){
-      const m = document.getElementById(id);
-      if(!m) return;
-      m.classList.remove('open');
-      m.setAttribute('aria-hidden','true');
-    }
-
-    document.querySelectorAll('[data-modal-open]').forEach(b=>{
-      b.style.cursor='pointer';
-      b.addEventListener('click', ()=> openModal(b.getAttribute('data-modal-open')));
-    });
-    document.querySelectorAll('[data-modal-close]').forEach(b=>{
-      b.style.cursor='pointer';
-      b.addEventListener('click', ()=> closeModal(b.getAttribute('data-modal-close')));
-    });
-
-    document.addEventListener('keydown', e=>{
-      if(e.key === 'Escape'){
-        document.querySelectorAll('.modal.open').forEach(m => {
-          m.classList.remove('open');
-          m.setAttribute('aria-hidden','true');
-        });
-      }
-    });
-
-    document.querySelectorAll('.modal').forEach(m => {
-      m.addEventListener('click', e => {
-        if(e.target === m) {
-          m.classList.remove('open');
-          m.setAttribute('aria-hidden','true');
-        }
-      });
-    });
-  </script>
+  <div data-site-footer></div>
 </body>
 </html>
