@@ -293,7 +293,7 @@ window.portfolioData = {
         },
         {
           heading: "Example Project",
-          body: "Years of Games is included as a focused example from the collection, with a clearer image name in the project assets so it can be referenced directly later."
+          body: ""
         }
       ],
       gallery: [
