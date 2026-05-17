@@ -1,5 +1,7 @@
 # NoticeableSmeh.github.io
 
+**** THIS IS COMPLETELY VIBE CODED AI SLOP, I AM NOT A WEB DEVELOPER THIS IS PURELY FOR ESTABLISHING MY PORTFOLIO WEBSITE****
+
 Static GitHub Pages portfolio for William de Try.
 
 ## Editing projects
