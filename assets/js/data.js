@@ -47,7 +47,7 @@ window.portfolioData = {
     },
     {
       title: "Engines And APIs",
-      body: "Unreal Engine 5, Unity, OpenGL, SDL3, DirectX 12 (learning)"
+      body: "Unreal Engine 5, Unity, OpenGL, SDL3"
     },
     {
       title: "Tools And Workflow",
@@ -68,7 +68,7 @@ window.portfolioData = {
       image: "assets/images/side-by-tide-cover.png",
       imageFit: "contain",
       alt: "Side By Tide key art - a squirrel and platypus pirate on a small boat at sunset",
-      highlight: "Gameplay programmer and codebase integrator",
+      highlight: "Gameplay programmer - systems and integration",
       summary: "A two-player couch co-op adventure built in Unreal Engine 5 during the SPM course at Stockholm University. One player pilots a gliding squirrel, the other a ground-slamming platypus, and they have to cooperate through puzzles, traversal, and a pirate-island treasure hunt. Currently in active development with a playable build out for testing.",
       tags: ["Unreal Engine 5", "C++", "Gameplay Systems", "Local Co-op", "Blueprints", "In Development"],
       stats: ["In development", "Two-player couch co-op", "Playable build out"],
@@ -81,7 +81,7 @@ window.portfolioData = {
       sections: [
         {
           heading: "My Role",
-          body: "Gameplay programmer and the person who tends to end up wiring everything together. By now I've touched nearly every system in the game except the squirrel's shooting, the enemies, and the boss."
+          body: "As one of the gameplay programmers on the project, my work concentrates on the shared C++ layer that the rest of the team's actors plug into, along with the Blueprint integration that connects everything together. The squirrel's shooting, the enemies, and the boss are handled by other programmers on the team."
         },
         {
           heading: "C++ Systems I Built",
@@ -173,15 +173,15 @@ window.portfolioData = {
     {
       slug: "prizm",
       title: "Prizm Puzzle Adventure",
-      subtitle: "Shipped Mobile Puzzle Game",
-      type: "Shipped game",
+      subtitle: "Course Project Taken Through Both Stores",
+      type: "Shipped mobile game",
       featured: true,
       image: "assets/images/prizm-app-store.png",
       alt: "Prizm Puzzle Adventure App Store listing and screenshots",
-      highlight: "Lead programmer, Unity, iOS and Android",
-      summary: "A complete mobile puzzle game I shipped to the App Store as lead programmer - deterministic light mechanics, RGB colour mixing, custom level-editor tooling, and the full path through iOS and Android submission.",
-      tags: ["Unity", "C#", "iOS", "Android", "Tools"],
-      stats: ["Shipped product", "Lead programmer", "Mobile optimisation"],
+      highlight: "Lead programmer - App Store and Google Play",
+      summary: "A small Unity puzzle game that started as a course project and kept going until it was live on both Google Play and the App Store. The game itself is course-scope; the point of the project is that we actually finished it and got it through both review processes.",
+      tags: ["Unity", "C#", "iOS", "Android"],
+      stats: ["Live on both stores", "Lead programmer", "Course project, finished"],
       links: [
         {
           label: "App Store",
@@ -190,22 +190,22 @@ window.portfolioData = {
       ],
       sections: [
         {
-          heading: "What I Owned",
-          body: "Lead programmer from prototype through store release.",
+          heading: "What I Did",
+          body: "Lead programmer on a small team. Most of the engineering effort went into the parts you can't see in screenshots.",
           bullets: [
-            "Deterministic beam reflection and splitting that designers could trust frame-to-frame.",
-            "RGB colour-mixing mechanics driving puzzle progression.",
-            "Unity editor tooling so level iteration didn't bottleneck on me.",
-            "Mobile performance work and the actual store submission process on both platforms."
+            "Beam reflection and colour-mixing puzzle mechanics in C#.",
+            "Lightweight Unity editor tooling so designers could iterate without waiting on me.",
+            "Mobile performance pass on real devices.",
+            "Both store submissions - Google Play first, then the longer back-and-forth with Apple."
           ]
         },
         {
-          heading: "Why It's On Here",
-          body: "Prizm is the answer when someone asks whether I've actually shipped anything. Prototype to public release, with the tooling and polish work that usually gets cut, not a jam build."
+          heading: "What's Actually On Display",
+          body: "Honest version: the game is course-scope, not a senior technical showcase. What the project does show is that we finished. Most course projects die on a hard drive - this one made it through Google Play review, then Apple's review, and is publicly live with real ratings. That's the part that's hard to fake."
         },
         {
           heading: "What I Took Away",
-          body: "Tools investment paid off almost immediately. A single source of truth between gameplay and visuals stopped a whole category of bug. Good debug output saved hours on the trickier puzzle interactions."
+          body: "Editor tooling pays off almost immediately even on a small team. A single source of truth between gameplay and visuals stops a whole category of bug. And the Apple submission process is its own skill - one I'd rather have already learned the first time than the second."
         }
       ]
     },
@@ -343,7 +343,7 @@ window.portfolioData = {
       title: "UE5 Environment And Lighting",
       subtitle: "Atmospheric Unreal Scene",
       type: "Realtime 3D scene",
-      featured: true,
+      featured: false,
       image: "assets/images/ue5-medieval-night-scene.png",
       imageFit: "contain",
       alt: "Medieval night scene rendered in Unreal Engine 5",
@@ -378,7 +378,7 @@ window.portfolioData = {
       title: "Other Game Projects",
       subtitle: "Game Jams, Prototypes, And Finished Small Games",
       type: "Gameplay prototyping",
-      featured: true,
+      featured: false,
       image: "assets/images/itch-games-gallery.png",
       imageFit: "contain",
       alt: "Itch.io gallery of William de Try game projects",
