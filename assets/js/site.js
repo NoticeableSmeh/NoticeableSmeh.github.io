@@ -158,10 +158,10 @@
         <div class="contact-card__layout">
           <div>
             <p class="eyebrow">Availability and contact</p>
-            <h2>Ready To Contribute</h2>
-            <p>Seeking part-time programming work, internships, or contract projects with Stockholm game studios.</p>
+            <h2>Get In Touch</h2>
+            <p>Looking for programming roles with Stockholm studios - internship, contract, part-time, or full-time. Happy hybrid or onsite.</p>
             <div class="contact-list">
-              <span><strong>Location:</strong> ${escapeHtml(profile.location)}. Hybrid or onsite ready.</span>
+              <span><strong>Location:</strong> ${escapeHtml(profile.location)}.</span>
               <span><strong>Availability:</strong> ${escapeHtml(profile.availability)}.</span>
               <span><strong>Focus:</strong> ${escapeHtml(profile.focus)}.</span>
               <span><strong>Email:</strong> <a href="mailto:${escapeHtml(profile.email)}">${escapeHtml(profile.email)}</a></span>

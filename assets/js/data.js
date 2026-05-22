@@ -3,8 +3,8 @@ window.portfolioData = {
     name: "William de Try",
     role: "Game Programmer",
     location: "Stockholm, Sweden",
-    availability: "10-20 hours/week, immediate start",
-    focus: "Shipped mobile games, rendering systems, gameplay tools",
+    availability: "Open to work, immediate start",
+    focus: "Unreal Engine 5 gameplay, mobile game shipping, graphics fundamentals",
     email: "william.detry@hotmail.se",
     resume: "William%20de%20Try%20CV.pdf",
     links: [
@@ -24,20 +24,20 @@ window.portfolioData = {
   },
   services: [
     {
-      title: "Mobile Game Development",
-      body: "Unity and C# gameplay systems, UI implementation, iOS/Android deployment, and mobile performance work."
+      title: "Unreal Engine 5 Gameplay",
+      body: "C++ actors and interfaces wired into Blueprint-facing systems. Currently doing this on Side By Tide, where I work on the interaction layer, the crafting and puzzle frameworks, and a lot of the code that hooks teammates' actors together."
     },
     {
-      title: "Graphics And Rendering Systems",
-      body: "OpenGL and C++ rendering work, shader implementation, camera systems, lighting, and low-level graphics pipeline understanding."
+      title: "Shipped Mobile Game",
+      body: "Prizm Puzzle Adventure went live on the App Store with me as lead programmer. I've walked the full path from prototype through iOS and Android submission and picked up which trade-offs actually matter on a phone."
     },
     {
-      title: "Rapid Prototyping",
-      body: "Fast iteration on mechanics, interaction feel, tools, and technical tests that help a team validate ideas quickly."
+      title: "Graphics Programming",
+      body: "A working CPU rasterizer in C++, a six-part OpenGL series, and notes I'm taking as I work through DirectX 12. Comfortable reading shader code and digging below the engine when I have to."
     },
     {
-      title: "Technical Problem Solving",
-      body: "Debugging complex gameplay behavior, improving maintainability, and turning vague production problems into concrete systems."
+      title: "Multi-Programmer Workflows",
+      body: "On team projects I usually end up the integration person — running the Git workflow, doing the merge passes, and patching teammates' work back together when conflicts get ugly."
     }
   ],
   skills: [
@@ -46,19 +46,169 @@ window.portfolioData = {
       body: "C++, C#, Java, GLSL"
     },
     {
-      title: "Engines And Frameworks",
-      body: "Unity, Unreal Engine 5, OpenGL, SDL3, CMake"
+      title: "Engines And APIs",
+      body: "Unreal Engine 5, Unity, OpenGL, SDL3, DirectX 12 (learning)"
     },
     {
-      title: "Development",
-      body: "Git, Android/iOS deployment, Maya, technical documentation"
+      title: "Tools And Workflow",
+      body: "Git, CMake, Maya, Unreal Blueprints, Android and iOS submission"
     },
     {
-      title: "Core Strengths",
-      body: "Graphics programming, mobile optimization, gameplay systems, editor tooling, rapid prototyping"
+      title: "Strengths",
+      body: "Gameplay systems in C++, graphics fundamentals, mobile shipping, team integration"
     }
   ],
   projects: [
+    {
+      slug: "side-by-tide",
+      title: "Side By Tide",
+      subtitle: "Local Co-op Pirate Adventure In Unreal Engine 5",
+      type: "Unreal Engine 5 game",
+      featured: true,
+      image: "assets/images/side-by-tide-cover.png",
+      imageFit: "contain",
+      alt: "Side By Tide key art - a squirrel and platypus pirate on a small boat at sunset",
+      highlight: "Gameplay programmer and codebase integrator",
+      summary: "A two-player couch co-op adventure built in Unreal Engine 5 during the SPM course at Stockholm University. One player pilots a gliding squirrel, the other a ground-slamming platypus, and they have to cooperate through puzzles, traversal, and a pirate-island treasure hunt. Currently in active development with a playable build out for testing.",
+      tags: ["Unreal Engine 5", "C++", "Gameplay Systems", "Local Co-op", "Blueprints", "In Development"],
+      stats: ["In development", "Two-player couch co-op", "Playable build out"],
+      links: [
+        {
+          label: "Play On Itch.io",
+          url: "https://noticeablesmeh.itch.io/"
+        }
+      ],
+      sections: [
+        {
+          heading: "My Role",
+          body: "Gameplay programmer and the person who tends to end up wiring everything together. By now I've touched nearly every system in the game except the squirrel's shooting, the enemies, and the boss."
+        },
+        {
+          heading: "C++ Systems I Built",
+          body: "Everything below sits on a small set of interfaces (Interactable, PlatypusInteractable, Activatable) so designers can wire any source to any target in the editor without me touching code.",
+          bullets: [
+            "Crafting framework - BuildSpot with ordered or free-order requirements, item consumption, and a spawn hook that wires the built object straight into the puzzle graph.",
+            "Interaction layer - Levers, ShootableButtons, PressurePlateRollingRock, and the Activatable contract they all drive.",
+            "Pattern puzzles - PatternPuzzleController coordinating shoot and ground-slam input orders across pressure plates and shootable targets.",
+            "Co-op physics - Raft towing with handle snapping, MovingActivatable platforms, and an Elevator that carries players cleanly.",
+            "Camera Cutscene Activator - multi-shot sequences with blend timing, delayed actor activation, and clean input lockout while the cutscene plays."
+          ]
+        },
+        {
+          heading: "Blueprint And Game Mode Work",
+          body: "Most of the glue lives in Blueprints so the rest of the team can read and tweak it.",
+          bullets: [
+            "Co-op Game Instance handling local player creation and shared coin state for couch co-op.",
+            "Base Game Mode respawn logic - drowning, partner-aware checkpoints, and respawn at death location vs last save.",
+            "Environmental pieces - dust traps, respawning coconut trees, spawn areas, and teleport-back volumes for out-of-bounds rescue."
+          ]
+        },
+        {
+          heading: "Beyond Code",
+          body: "Outside the C++ work I helped shape the first island into a coherent thirty-minute level, did most of the bugfix sweeps, and was the person handling Git for the team - managing the dev branch, pushing into main, and rescuing teammates' progress by hand when merges went sideways."
+        }
+      ],
+      gallery: [
+        {
+          image: "assets/images/side-by-tide-hero.png",
+          alt: "Squirrel and platypus pirates crossing a log bridge over a jungle pond",
+          caption: "First-island puzzle area - squirrel and platypus crossing a log bridge."
+        },
+        {
+          image: "assets/images/side-by-tide-island-overview.png",
+          alt: "Top-down view of the first island level with ponds, palm trees, and rock paths",
+          caption: "First island layout - the playable thirty-minute prologue."
+        },
+        {
+          image: "assets/images/side-by-tide-temple-warm.png",
+          alt: "Sunset-lit interior of a pirate temple with torches and a throne",
+          caption: "Temple interior used in the later puzzle area."
+        },
+        {
+          image: "assets/images/side-by-tide-temple-night.png",
+          alt: "Night-lit temple courtyard with stone stairs and pillars",
+          caption: "Night-time temple courtyard from the second level."
+        }
+      ]
+    },
+    {
+      slug: "directx12",
+      title: "Learning DirectX 12",
+      subtitle: "Ongoing Learning Devlog",
+      type: "Graphics learning",
+      featured: true,
+      image: "assets/images/directx12-part1-banner.png",
+      imageFit: "contain",
+      alt: "Learning DirectX 12 Part 1 banner with a stylised blue cube",
+      highlight: "Learning in public",
+      summary: "Notes I'm taking as I work through Frank D. Luna's Introduction to 3D Game Programming with DirectX 12. Each post turns one chapter of dense reference material into something I can come back to later and actually re-use.",
+      tags: ["DirectX 12", "C++", "Devlog", "Ongoing", "Learning"],
+      stats: ["Ongoing series", "2 parts written", "DirectX 12"],
+      links: [
+        {
+          label: "Read Part 1 - Math",
+          url: "https://dev.to/noticeablesmeh"
+        },
+        {
+          label: "Read Part 2 - Initialization Theory",
+          url: "https://dev.to/noticeablesmeh"
+        }
+      ],
+      sections: [
+        {
+          heading: "What's Covered So Far",
+          body: "I'm new to DirectX 12, so the early parts cover the theory before I get into actual code.",
+          bullets: [
+            "Part 1 - vectors, magnitude, normalisation, dot and cross product, matrices, and homogeneous coordinates.",
+            "Part 2 - the COM model, swap chains, depth buffering, descriptors, DXGI, residency, resources, and CPU/GPU synchronisation.",
+            "Future parts move into actual Direct3D 12 initialization code and the render loop."
+          ]
+        },
+        {
+          heading: "Why I'm Writing It",
+          body: "Writing in public is the part that locks the material in. Going from 'I can follow a chapter' to 'I can explain this to a stranger' is a different skill, and I want to keep practising it on the API a lot of modern engines still sit on top of."
+        }
+      ]
+    },
+    {
+      slug: "prizm",
+      title: "Prizm Puzzle Adventure",
+      subtitle: "Shipped Mobile Puzzle Game",
+      type: "Shipped game",
+      featured: true,
+      image: "assets/images/prizm-app-store.png",
+      alt: "Prizm Puzzle Adventure App Store listing and screenshots",
+      highlight: "Lead programmer, Unity, iOS and Android",
+      summary: "A complete mobile puzzle game I shipped to the App Store as lead programmer - deterministic light mechanics, RGB colour mixing, custom level-editor tooling, and the full path through iOS and Android submission.",
+      tags: ["Unity", "C#", "iOS", "Android", "Tools"],
+      stats: ["Shipped product", "Lead programmer", "Mobile optimisation"],
+      links: [
+        {
+          label: "App Store",
+          url: "https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB"
+        }
+      ],
+      sections: [
+        {
+          heading: "What I Owned",
+          body: "Lead programmer from prototype through store release.",
+          bullets: [
+            "Deterministic beam reflection and splitting that designers could trust frame-to-frame.",
+            "RGB colour-mixing mechanics driving puzzle progression.",
+            "Unity editor tooling so level iteration didn't bottleneck on me.",
+            "Mobile performance work and the actual store submission process on both platforms."
+          ]
+        },
+        {
+          heading: "Why It's On Here",
+          body: "Prizm is the answer when someone asks whether I've actually shipped anything. Prototype to public release, with the tooling and polish work that usually gets cut, not a jam build."
+        },
+        {
+          heading: "What I Took Away",
+          body: "Tools investment paid off almost immediately. A single source of truth between gameplay and visuals stopped a whole category of bug. Good debug output saved hours on the trickier puzzle interactions."
+        }
+      ]
+    },
     {
       slug: "cplusengine",
       title: "CPlusEngine",
@@ -69,7 +219,7 @@ window.portfolioData = {
       imageFit: "contain",
       alt: "CPlusEngine running a Breakout game next to C++ source code",
       highlight: "From-scratch engine architecture",
-      summary: "A custom-built C++ game engine with clean separation between engine and game code, SDL3 rendering, scene management, text, audio, and a structured game loop.",
+      summary: "A small custom C++ engine with a clean split between engine and game code, SDL3 rendering, scene management, audio, and a predictable update loop - small enough to read, big enough to run a Breakout clone on top of.",
       tags: ["C++", "SDL3", "CMake", "Architecture"],
       stats: ["Engine/game split", "Scene management", "Audio and text"],
       links: [
@@ -81,16 +231,51 @@ window.portfolioData = {
       sections: [
         {
           heading: "What I Built",
-          body: "CPlusEngine is a personal engine project focused on the practical shape of a game codebase: initialization, resource ownership, scenes, renderable objects, audio, and a predictable update loop.",
+          body: "A small engine focused on the boundaries that actually matter in a codebase: initialization, resource ownership, scenes, renderable objects, audio, and the update loop.",
           bullets: [
-            "Separated engine-level systems from game-specific Breakout code.",
-            "Built around SDL3, CMake, sprite rendering, text rendering, and audio playback.",
-            "Kept the architecture small enough to understand while still being expandable."
+            "Engine systems cleanly separated from Breakout-specific code.",
+            "SDL3 plus CMake for sprite rendering, text, and audio.",
+            "Kept small enough that the architecture is the documentation."
           ]
         },
         {
-          heading: "Why It Matters",
-          body: "The project shows that I can reason about the boundaries between reusable engine code and concrete gameplay code, which is useful on both engine teams and gameplay teams that need maintainable systems."
+          heading: "The Point",
+          body: "CPlusEngine is practice for the boundary between reusable engine code and a specific game on top of it - which is where most engine work actually lives."
+        }
+      ]
+    },
+    {
+      slug: "modern-opengl",
+      title: "Modern OpenGL Systems",
+      subtitle: "Real-Time Rendering Study",
+      type: "Rendering systems",
+      featured: true,
+      image: "assets/images/modern-opengl-learning.jpg",
+      alt: "Learning OpenGL scene with dark wooden geometry",
+      highlight: "Catching up on modern OpenGL",
+      summary: "A six-part series catching up on modern OpenGL - shaders, lighting, materials, camera systems, model loading, and the practical shape of a small renderer.",
+      tags: ["OpenGL", "GLSL", "Lighting", "Camera Systems"],
+      stats: ["6-part devlog", "7,000+ words", "Renderer study"],
+      links: [
+        {
+          label: "View Series",
+          url: "https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o"
+        }
+      ],
+      sections: [
+        {
+          heading: "What I Built",
+          body: "Each post lines up with a working piece of renderer functionality - tutorial in spirit, but kept honest by having to write the explanation afterwards.",
+          bullets: [
+            "Shader program setup and GLSL iteration.",
+            "Camera movement and scene navigation.",
+            "Lighting, materials, and model loading.",
+            "Written notes that walk through the implementation path."
+          ]
+        },
+        {
+          heading: "Why I Wrote It Down",
+          body: "Writing the series was the part that locked the material in. The DirectX 12 devlog is the direct continuation of that habit."
         }
       ]
     },
@@ -104,7 +289,7 @@ window.portfolioData = {
       imageFit: "contain",
       alt: "A colorful cow model rendered by a CPU rasterizer",
       highlight: "From-scratch rendering system",
-      summary: "A CPU-based rasterizer with triangle rasterization, back-face culling, depth buffering, barycentric interpolation, framebuffer output, and OBJ loading.",
+      summary: "A CPU rasterizer with triangle setup, back-face culling, depth buffering, barycentric interpolation, framebuffer output, and OBJ loading - paired with a five-part devlog explaining how each piece works.",
       tags: ["C++", "Rasterization", "Depth Buffer", "OBJ Loading"],
       stats: ["5-part devlog", "4,000+ words", "CPU pipeline"],
       links: [
@@ -119,18 +304,18 @@ window.portfolioData = {
       ],
       sections: [
         {
-          heading: "Technical Scope",
-          body: "The rasterizer breaks the graphics pipeline down into understandable parts and implements them directly on the CPU.",
+          heading: "What's In It",
+          body: "Each part of the pipeline is implemented directly on the CPU so the trade-offs and shortcuts are visible.",
           bullets: [
             "Triangle setup, edge tests, and pixel coverage.",
             "Depth buffering for correct visibility.",
             "Back-face culling and OBJ mesh loading.",
-            "Diagnostic renders for triangles, wireframes, and framebuffer output."
+            "Diagnostic renders for triangles, wireframes, and framebuffer dumps."
           ]
         },
         {
-          heading: "Communication",
-          body: "I documented the work in a long-form technical series so the project is not just code, but also a clear explanation of decisions, mistakes, and iteration."
+          heading: "The Writing",
+          body: "The devlog is the other half of the project. It's where the decisions, the mistakes, and the iteration get pinned down so the code isn't just a black box six months later."
         }
       ],
       gallery: [
@@ -154,80 +339,6 @@ window.portfolioData = {
       ]
     },
     {
-      slug: "modern-opengl",
-      title: "Modern OpenGL Systems",
-      subtitle: "Real-Time Rendering Study",
-      type: "Rendering systems",
-      featured: true,
-      image: "assets/images/modern-opengl-learning.jpg",
-      alt: "Learning OpenGL scene with dark wooden geometry",
-      highlight: "Real-time rendering implementation",
-      summary: "A technical series covering shaders, lighting, materials, camera systems, model loading, and the practical structure of an OpenGL renderer.",
-      tags: ["OpenGL", "GLSL", "Lighting", "Camera Systems"],
-      stats: ["6-part devlog", "7,000+ words", "Renderer study"],
-      links: [
-        {
-          label: "View Series",
-          url: "https://dev.to/noticeablesmeh/opengl-catching-up-week-1-1k8o"
-        }
-      ],
-      sections: [
-        {
-          heading: "Focus",
-          body: "This project was about catching up on modern OpenGL while turning each step into a working piece of renderer functionality.",
-          bullets: [
-            "Shader program setup and GLSL iteration.",
-            "Camera movement and scene navigation.",
-            "Lighting, materials, and model loading.",
-            "Written notes that explain the implementation path."
-          ]
-        },
-        {
-          heading: "Portfolio Value",
-          body: "It demonstrates both technical curiosity and the ability to make low-level graphics topics readable to other developers."
-        }
-      ]
-    },
-    {
-      slug: "prizm",
-      title: "Prizm Puzzle Adventure",
-      subtitle: "Shipped Mobile Puzzle Game",
-      type: "Shipped game",
-      featured: true,
-      image: "assets/images/prizm-app-store.png",
-      alt: "Prizm Puzzle Adventure App Store listing and screenshots",
-      highlight: "Lead Programmer, Unity, iOS/Android",
-      summary: "A complete mobile puzzle game shipped from prototype to store release, with deterministic light mechanics, color mixing, editor tooling, and mobile deployment.",
-      tags: ["Unity", "C#", "iOS", "Android", "Tools"],
-      stats: ["Shipped product", "Lead programmer", "Mobile optimization"],
-      links: [
-        {
-          label: "App Store",
-          url: "https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB"
-        }
-      ],
-      sections: [
-        {
-          heading: "Production Ownership",
-          body: "As lead programmer, I owned the technical implementation from prototype through store release.",
-          bullets: [
-            "Implemented deterministic beam reflection and splitting.",
-            "Built RGB color mixing mechanics for puzzle progression.",
-            "Created Unity editor tooling for faster level iteration.",
-            "Handled mobile performance considerations and store deployment."
-          ]
-        },
-        {
-          heading: "What It Shows",
-          body: "Prizm proves that I can move beyond isolated prototypes and deliver complete, shippable game systems with tooling, polish, and deployment work included."
-        },
-        {
-          heading: "Production Lessons",
-          body: "The project reinforced that tools investment pays off quickly, single sources of truth prevent gameplay and visual mismatches, and clear debugging output saves time on complex interactions."
-        }
-      ]
-    },
-    {
       slug: "ue5-environment",
       title: "UE5 Environment And Lighting",
       subtitle: "Atmospheric Unreal Scene",
@@ -237,7 +348,7 @@ window.portfolioData = {
       imageFit: "contain",
       alt: "Medieval night scene rendered in Unreal Engine 5",
       highlight: "Atmospheric environment work",
-      summary: "A medieval night environment with custom Maya assets, dynamic lighting, post-processing, composition, and Niagara effects.",
+      summary: "A medieval night environment in Unreal Engine 5 with custom Maya assets, dynamic lighting, post-processing, composition work, and Niagara effects.",
       tags: ["Unreal Engine 5", "Lighting", "Maya", "Niagara"],
       stats: ["Custom assets", "Lighting pass", "Video showcase"],
       links: [
@@ -248,17 +359,17 @@ window.portfolioData = {
       ],
       sections: [
         {
-          heading: "Scene Goals",
-          body: "The scene focuses on composition, night-time lighting, readable focal points, and using engine tools to create atmosphere.",
+          heading: "What I Was Going For",
+          body: "Composition, night-time lighting, readable focal points, and atmosphere using the engine's own tools.",
           bullets: [
-            "Built supporting assets in Maya.",
-            "Used Unreal lighting and post-processing to shape the mood.",
-            "Added environment detail and effects with Niagara."
+            "Supporting assets modelled in Maya.",
+            "Unreal lighting and post-processing shaped the mood.",
+            "Environment detail and effects layered in with Niagara."
           ]
         },
         {
-          heading: "Why It Belongs Here",
-          body: "Even when my primary focus is programming, understanding how art, lighting, and technical systems meet inside an engine helps me collaborate better with artists and designers."
+          heading: "Why It's Here",
+          body: "I'm a programmer first, but knowing how art, lighting, and engine tools fit together makes me much easier to work with when artists and tech artists are around the table."
         }
       ]
     },
@@ -272,7 +383,7 @@ window.portfolioData = {
       imageFit: "contain",
       alt: "Itch.io gallery of William de Try game projects",
       highlight: "Small games and fast iteration",
-      summary: "A collection of game jam entries, prototypes, and smaller finished games that show range, experimentation, and fast end-to-end delivery.",
+      summary: "A collection of jam entries, prototypes, and smaller finished games. The point is range and the habit of actually finishing things under time pressure.",
       tags: ["Game Jams", "Unity", "Prototypes", "Itch.io"],
       stats: ["Multiple releases", "Fast iteration", "Playable builds"],
       links: [
@@ -283,17 +394,13 @@ window.portfolioData = {
       ],
       sections: [
         {
-          heading: "What This Collection Shows",
-          body: "These projects are smaller, but they show comfort with constraints, quick decisions, and finishing playable work under time pressure.",
+          heading: "What It Shows",
+          body: "Smaller projects, but the habits that come with them - scoping a jam, making decisions under a deadline, and shipping a playable build at the end of the weekend.",
           bullets: [
             "Game jam scope control.",
             "Playable prototypes and small releases.",
-            "Practice with different mechanics, themes, and presentation styles."
+            "Practice across different mechanics, themes, and presentation styles."
           ]
-        },
-        {
-          heading: "Example Project",
-          body: ""
         }
       ],
       gallery: [
