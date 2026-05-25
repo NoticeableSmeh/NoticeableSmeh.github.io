@@ -173,15 +173,15 @@ window.portfolioData = {
     {
       slug: "prizm",
       title: "Prizm Puzzle Adventure",
-      subtitle: "Course Project Taken Through Both Stores",
+      subtitle: "Mobile Puzzle Game On iOS And Android",
       type: "Shipped mobile game",
       featured: true,
       image: "assets/images/prizm-app-store.png",
       alt: "Prizm Puzzle Adventure App Store listing and screenshots",
-      highlight: "Lead programmer - App Store and Google Play",
-      summary: "A small Unity puzzle game that started as a course project and kept going until it was live on both Google Play and the App Store. The game itself is course-scope; the point of the project is that we actually finished it and got it through both review processes.",
+      highlight: "Lead programmer on a shipped mobile title",
+      summary: "A Unity puzzle game built with a small team and published to the App Store and Google Play. Light-beam reflection and colour-mixing mechanics, custom Unity editor tooling for level design, and the full submission process across both stores.",
       tags: ["Unity", "C#", "iOS", "Android"],
-      stats: ["Live on both stores", "Lead programmer", "Course project, finished"],
+      stats: ["App Store and Google Play", "Lead programmer", "Light-beam puzzles"],
       links: [
         {
           label: "App Store",
@@ -190,22 +190,22 @@ window.portfolioData = {
       ],
       sections: [
         {
-          heading: "What I Did",
-          body: "Lead programmer on a small team. Most of the engineering effort went into the parts you can't see in screenshots.",
+          heading: "What I Built",
+          body: "Lead programmer on a small team. My work spanned the gameplay code, the tooling that supported it, and the platform side of shipping.",
           bullets: [
-            "Beam reflection and colour-mixing puzzle mechanics in C#.",
-            "Lightweight Unity editor tooling so designers could iterate without waiting on me.",
-            "Mobile performance pass on real devices.",
-            "Both store submissions - Google Play first, then the longer back-and-forth with Apple."
+            "Light-beam reflection and colour-mixing puzzle mechanics in C#.",
+            "Unity editor tooling so designers could build and iterate on levels without engineering bottlenecks.",
+            "Mobile performance pass across iOS and Android devices.",
+            "Store submissions on both platforms - Google Play first, then the longer iOS review process."
           ]
         },
         {
-          heading: "What's Actually On Display",
-          body: "Honest version: the game is course-scope, not a senior technical showcase. What the project does show is that we finished. Most course projects die on a hard drive - this one made it through Google Play review, then Apple's review, and is publicly live with real ratings. That's the part that's hard to fake."
+          heading: "What This Project Shows",
+          body: "End-to-end mobile shipping: not just the gameplay code, but mobile performance, store assets, privacy disclosures, age ratings, and the review processes on both Apple and Google. Plenty of student projects build a working game; fewer go through what it takes to put one in front of real players."
         },
         {
           heading: "What I Took Away",
-          body: "Editor tooling pays off almost immediately even on a small team. A single source of truth between gameplay and visuals stops a whole category of bug. And the Apple submission process is its own skill - one I'd rather have already learned the first time than the second."
+          body: "Editor tooling pays for itself quickly, even on a small team. A single source of truth between gameplay logic and visual representation prevents an entire class of bug. And the iOS submission process is its own discipline worth knowing before you need it."
         }
       ]
     },
