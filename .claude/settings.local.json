@@ -3,7 +3,9 @@
     "allow": [
       "Bash(ls \"C:\\\\Users\\\\willi\\\\Desktop\" 2>/dev/null | head -40)",
       "Bash(ls \"C:\\\\Users\\\\willi\\\\Desktop\\\\Bilder 4060ti\" 2>/dev/null; echo \"---\"; ls \"C:\\\\Users\\\\willi\\\\AppData\\\\Local\\\\Temp\" 2>/dev/null | grep -i -E \"\\(png|jpg|gif\\)\" | head -10)",
-      "PowerShell($src='C:\\\\Users\\\\willi\\\\Desktop\\\\SPMBILDER\\\\itch'; $dst='C:\\\\Users\\\\willi\\\\Documents\\\\GitHub\\\\NoticeableSmeh.github.io\\\\assets\\\\images'; Copy-Item \"$src\\\\directx12.png\" \"$dst\\\\directx12-part1-banner.png\" -Force; Copy-Item \"$src\\\\itch1.png\" \"$dst\\\\side-by-tide-hero.png\" -Force; Copy-Item \"$src\\\\3.png\" \"$dst\\\\side-by-tide-island-overview.png\" -Force; Copy-Item \"$src\\\\2.png\" \"$dst\\\\side-by-tide-temple-warm.png\" -Force; Copy-Item \"$src\\\\4.png\" \"$dst\\\\side-by-tide-temple-night.png\" -Force; Copy-Item \"$src\\\\5.png\" \"$dst\\\\side-by-tide-pool.png\" -Force; Get-ChildItem $dst | Where-Object { $_.Name -match 'directx|side-by-tide' } | Select-Object Name, Length)"
+      "PowerShell($src='C:\\\\Users\\\\willi\\\\Desktop\\\\SPMBILDER\\\\itch'; $dst='C:\\\\Users\\\\willi\\\\Documents\\\\GitHub\\\\NoticeableSmeh.github.io\\\\assets\\\\images'; Copy-Item \"$src\\\\directx12.png\" \"$dst\\\\directx12-part1-banner.png\" -Force; Copy-Item \"$src\\\\itch1.png\" \"$dst\\\\side-by-tide-hero.png\" -Force; Copy-Item \"$src\\\\3.png\" \"$dst\\\\side-by-tide-island-overview.png\" -Force; Copy-Item \"$src\\\\2.png\" \"$dst\\\\side-by-tide-temple-warm.png\" -Force; Copy-Item \"$src\\\\4.png\" \"$dst\\\\side-by-tide-temple-night.png\" -Force; Copy-Item \"$src\\\\5.png\" \"$dst\\\\side-by-tide-pool.png\" -Force; Get-ChildItem $dst | Where-Object { $_.Name -match 'directx|side-by-tide' } | Select-Object Name, Length)",
+      "Bash(ls \"C:\\\\Users\\\\willi\\\\Desktop\\\\CV LATEX\")",
+      "Bash(pdflatex -interaction=nonstopmode -halt-on-error cv.tex)"
     ]
   }
 }
