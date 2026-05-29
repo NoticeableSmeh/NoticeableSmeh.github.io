@@ -29,7 +29,7 @@ window.portfolioData = {
     },
     {
       title: "Shipped Mobile Game",
-      body: "Prizm Puzzle Adventure went live on the App Store with me as lead programmer. I've walked the full path from prototype through iOS and Android submission and picked up which trade-offs actually matter on a phone."
+      body: "Prizm Puzzle Adventure went live on the App Store with me taking the lead on the programming side. I've walked the full path from prototype through iOS and Android submission and picked up which trade-offs actually matter on a phone."
     },
     {
       title: "Graphics Programming",
@@ -178,10 +178,10 @@ window.portfolioData = {
       featured: true,
       image: "assets/images/prizm-app-store.png",
       alt: "Prizm Puzzle Adventure App Store listing and screenshots",
-      highlight: "Lead programmer on a shipped mobile title",
+      highlight: "Took the lead on programming for a shipped mobile title",
       summary: "A Unity puzzle game built with a small team and published to the App Store and Google Play. Light-beam reflection and colour-mixing mechanics, custom Unity editor tooling for level design, and the full submission process across both stores.",
       tags: ["Unity", "C#", "iOS", "Android"],
-      stats: ["App Store and Google Play", "Lead programmer", "Light-beam puzzles"],
+      stats: ["App Store and Google Play", "Programming lead", "Light-beam puzzles"],
       links: [
         {
           label: "App Store",
@@ -191,7 +191,7 @@ window.portfolioData = {
       sections: [
         {
           heading: "What I Built",
-          body: "Lead programmer on a small team. My work spanned the gameplay code, the tooling that supported it, and the platform side of shipping.",
+          body: "Took the lead on programming for a small student team. My work spanned the gameplay code, the tooling that supported it, and the platform side of shipping.",
           bullets: [
             "Light-beam reflection and colour-mixing puzzle mechanics in C#.",
             "Unity editor tooling so designers could build and iterate on levels without engineering bottlenecks.",
