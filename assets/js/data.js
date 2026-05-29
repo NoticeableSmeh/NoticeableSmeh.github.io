@@ -81,31 +81,35 @@ window.portfolioData = {
       sections: [
         {
           heading: "My Role",
-          body: "As one of the gameplay programmers on the project, my work concentrates on the shared C++ layer that the rest of the team's actors plug into, along with the Blueprint integration that connects everything together. The squirrel's shooting, the enemies, and the boss are handled by other programmers on the team."
+          body: "One of the gameplay programmers on the team. I contributed across most of the gameplay codebase in both C++ and Blueprints, with a focus on keeping systems SOLID and decoupled. The squirrel's shooting, the enemies, and the boss are handled by other programmers on the team."
         },
         {
           heading: "C++ Systems I Built",
-          body: "Everything below sits on a small set of interfaces (Interactable, PlatypusInteractable, Activatable) so designers can wire any source to any target in the editor without me touching code.",
+          body: "Everything below sits on a small set of interfaces (Interactable, PlatypusInteractable, Activatable) so designers can wire any source (lever, button, plate) to any target in the editor without me touching code.",
           bullets: [
-            "Crafting framework - BuildSpot with ordered or free-order requirements, item consumption, and a spawn hook that wires the built object straight into the puzzle graph.",
-            "Interaction layer - Levers, ShootableButtons, PressurePlateRollingRock, and the Activatable contract they all drive.",
+            "Crafting framework - BuildSpot with ordered or free-order requirements, item consumption, and a spawn hook into the puzzle graph. Refactored away from hardcoded paths into something readable.",
+            "Interaction layer - Levers, ShootableButtons, RollingRock and PressurePlateRollingRock, plus the Activatable contract they all drive.",
             "Pattern puzzles - PatternPuzzleController coordinating shoot and ground-slam input orders across pressure plates and shootable targets.",
-            "Co-op physics - Raft towing with handle snapping, MovingActivatable platforms, and an Elevator that carries players cleanly.",
-            "Camera Cutscene Activator - multi-shot sequences with blend timing, delayed actor activation, and clean input lockout while the cutscene plays."
+            "Co-op physics - Raft towing with handle snapping, MovingActivatable platforms, and an Elevator that carries players cleanly (after the fix that stopped it pushing them into the ground).",
+            "Camera Cutscene Activator - multi-shot sequences with blend timing, delayed actor activation, and clean input lockout while the cutscene plays.",
+            "Co-op support code - auto-follow camera, checkpoint respawn, the Platypus character logic, and the base game mode and player controller the rest of the project sits on."
           ]
         },
         {
-          heading: "Blueprint And Game Mode Work",
+          heading: "Blueprint Work",
           body: "Most of the glue lives in Blueprints so the rest of the team can read and tweak it.",
           bullets: [
-            "Co-op Game Instance handling local player creation and shared coin state for couch co-op.",
-            "Base Game Mode respawn logic - drowning, partner-aware checkpoints, and respawn at death location vs last save.",
-            "Environmental pieces - dust traps, respawning coconut trees, spawn areas, and teleport-back volumes for out-of-bounds rescue."
+            "Game framework - BaseGameMode, BasePlayerController, and CoopGameInstance handling local player creation, shared coin state, and partner-aware respawn (drowning, death-location vs last save).",
+            "Interactables - Lever, ShootableButton, PatternShootableButton, PressurePlate, PatternPressurePlate, BlockingStone, RotatingPillar, RollingRock.",
+            "Activatable targets - Elevator, MovingActivatable (door and water-block variants), DisappearingActivatable, and the Raft.",
+            "Crafting and items - BuildSpot, Log, Stick, CoconutItem, CoconutOnTree with the shoot-down logic, and the LogTree and StickTree sources.",
+            "Player BPs - FlyingSquirrel and Platypus character setup.",
+            "World and utility - Coin pickup flow, SpawnArea, TeleportPlayerBackArea and TeleportToLastLevel for out-of-bounds rescue, Blocker, and the CameraCutsceneActivator wrapper."
           ]
         },
         {
           heading: "Beyond Code",
-          body: "Outside the C++ work I helped shape the first island into a coherent thirty-minute level, did most of the bugfix sweeps, and was the person handling Git for the team - managing the dev branch, pushing into main, and rescuing teammates' progress by hand when merges went sideways."
+          body: "Outside the programming I helped shape the first island into a coherent thirty-minute level and did most of the level integration - wiring teammates' actors together so a button actually opens its door. I swept up the bulk of the bugs, wrote four of the team's design documents, and ran the Git workflow - managing the dev branch, pushing into main, and rescuing teammates' progress by hand when merges went sideways."
         }
       ],
       gallery: [
