@@ -28,8 +28,8 @@ window.portfolioData = {
       body: "C++ actors and interfaces wired into Blueprint-facing systems. Currently doing this on Side By Tide, where I work on the interaction layer, the crafting and puzzle frameworks, and a lot of the code that hooks teammates' actors together."
     },
     {
-      title: "Shipped Mobile Game",
-      body: "Prizm Puzzle Adventure went live on the App Store with me taking the lead on the programming side. I've walked the full path from prototype through iOS and Android submission and picked up which trade-offs actually matter on a phone."
+      title: "Unity And C#",
+      body: "C# in Unity is still my mobile path. Prizm Puzzle Adventure shipped to the App Store and Google Play with me writing the reflection and splitter beam mechanics, the level selector, the victory screen, and a lot of the bugfix passes. MonoBehaviour patterns, editor work, and mobile performance are all comfortable ground."
     },
     {
       title: "Graphics Programming",
@@ -78,38 +78,100 @@ window.portfolioData = {
           url: "https://noticeablesmeh.itch.io/"
         }
       ],
-      sections: [
+      story: [
         {
-          heading: "My Role",
-          body: "One of the gameplay programmers on the team. I contributed across most of the gameplay codebase in both C++ and Blueprints, with a focus on keeping systems SOLID and decoupled. The squirrel's shooting, the enemies, and the boss are handled by other programmers on the team."
+          heading: "What I Worked On",
+          body: "Gameplay programmer on a five-person team building Side By Tide in Unreal Engine 5 during the SPM course at Stockholm University. I worked across most of the C++ and Blueprint codebase with a focus on keeping systems SOLID and decoupled so teammates' actors could plug in without me having to touch their code. The squirrel's shooting, the enemies, and the boss are handled by other programmers on the team."
         },
         {
-          heading: "C++ Systems I Built",
-          body: "Everything below sits on a small set of interfaces (Interactable, PlatypusInteractable, Activatable) so designers can wire any source (lever, button, plate) to any target in the editor without me touching code.",
-          bullets: [
-            "Crafting framework - BuildSpot with ordered or free-order requirements, item consumption, and a spawn hook into the puzzle graph. Refactored away from hardcoded paths into something readable.",
-            "Interaction layer - Levers, ShootableButtons, RollingRock and PressurePlateRollingRock, plus the Activatable contract they all drive.",
-            "Pattern puzzles - PatternPuzzleController coordinating shoot and ground-slam input orders across pressure plates and shootable targets.",
-            "Co-op physics - Raft towing with handle snapping, MovingActivatable platforms, and an Elevator that carries players cleanly (after the fix that stopped it pushing them into the ground).",
-            "Camera Cutscene Activator - multi-shot sequences with blend timing, delayed actor activation, and clean input lockout while the cutscene plays.",
-            "Co-op support code - auto-follow camera, checkpoint respawn, the Platypus character logic, and the base game mode and player controller the rest of the project sits on."
-          ]
+          heading: "Whiteboxing The Islands",
+          body: "Before any code went in I spent the first weeks whiteboxing - laying out the rough geometry of the first island, then helping shape the second and third. The third one brought a key co-op idea: one player swims across, the other follows by a different path, so the swim mechanic had to be planned into the layout from the start."
         },
         {
-          heading: "Blueprint Work",
-          body: "Most of the glue lives in Blueprints so the rest of the team can read and tweak it.",
-          bullets: [
-            "Game framework - BaseGameMode, BasePlayerController, and CoopGameInstance handling local player creation, shared coin state, and partner-aware respawn (drowning, death-location vs last save).",
-            "Interactables - Lever, ShootableButton, PatternShootableButton, PressurePlate, PatternPressurePlate, BlockingStone, RotatingPillar, RollingRock.",
-            "Activatable targets - Elevator, MovingActivatable (door and water-block variants), DisappearingActivatable, and the Raft.",
-            "Crafting and items - BuildSpot, Log, Stick, CoconutItem, CoconutOnTree with the shoot-down logic, and the LogTree and StickTree sources.",
-            "Player BPs - FlyingSquirrel and Platypus character setup.",
-            "World and utility - Coin pickup flow, SpawnArea, TeleportPlayerBackArea and TeleportToLastLevel for out-of-bounds rescue, Blocker, and the CameraCutsceneActivator wrapper."
-          ]
+          image: "assets/images/side-by-tide-process/first-whitebox.png",
+          alt: "Rough whitebox geometry of the first island in Unreal Engine 5",
+          caption: "First island whitebox - rough geometry to feel the layout before any art landed."
         },
         {
-          heading: "Beyond Code",
-          body: "Outside the programming I helped shape the first island into a coherent thirty-minute level and did most of the level integration - wiring teammates' actors together so a button actually opens its door. I swept up the bulk of the bugs, wrote four of the team's design documents, and ran the Git workflow - managing the dev branch, pushing into main, and rescuing teammates' progress by hand when merges went sideways."
+          image: "assets/images/side-by-tide-process/third-island-whitebox.png",
+          alt: "Whitebox of the third island with a turquoise water channel for the swim path",
+          caption: "Third island - water swim path baked in for the co-op split."
+        },
+        {
+          heading: "Blueprints And The C++ Layer",
+          body: "Then the code went in. C++ for the systems that needed to be fast or reusable - interfaces, the crafting framework, the elevator, the raft, the pattern puzzle controller. Blueprints for the glue: BaseGameMode, BasePlayerController, CoopGameInstance, the player character BPs, and anything the rest of the team needed to read or tweak themselves."
+        },
+        {
+          image: "assets/images/side-by-tide-process/ue5-editor.png",
+          alt: "Unreal Engine 5 editor showing the project's blueprints in the content browser",
+          caption: "Working in the UE5 editor - the project's Blueprints landing in the content browser."
+        },
+        {
+          heading: "Mechanics Talking To Each Other",
+          body: "The card on the team's Trello labelled 'how mechanics talk to each other' was the Activatable / Interactable contract. A small set of interfaces in C++ - one for sources (lever, button, pressure plate), one for targets (door, platform, rolling rock) - so designers can wire any source to any target in the editor without me touching code. That decoupling is what let the puzzle layer scale once levels started filling up."
+        },
+        {
+          image: "assets/images/side-by-tide-process/trello-done.png",
+          alt: "Trello Done column with cards for Updraft, Pick up and Drop, Skjuta ekollon, How mechanics talk to each other, Co-op, and Rulla stenar",
+          caption: "Mechanics ticking off the Done column - that 'how mechanics talk to each other' card was the Activatable interface."
+        },
+        {
+          heading: "The Crafting Framework",
+          body: "BuildSpot started life as hardcoded check-this-then-this logic. I rewrote it into something readable: ordered or free-order requirements, item consumption, and a spawn hook that drops the built object straight into the puzzle graph. Now a designer can build a bridge with whatever items they want, not just the two combinations I happened to plan for."
+        },
+        {
+          image: "assets/images/side-by-tide-process/crafting-ui.png",
+          alt: "Player standing on a build spot with a 1x stick UI prompt",
+          caption: "Crafting system in the wild - sticks and coconuts as inventory items plugged into BuildSpot."
+        },
+        {
+          heading: "Shootable Targets And Pattern Puzzles",
+          body: "Shootable buttons drive the squirrel side of the puzzles - she shoots acorns, the button fires its Activatable target. The pattern variant adds order through PatternPuzzleController: hit the targets in the right sequence and the door opens, hit the wrong one and it resets. Same contract underneath, just composed differently."
+        },
+        {
+          image: "assets/images/side-by-tide-process/bullseye.png",
+          alt: "Tree with a yellow target and a sign reading Squirrel can shoot things marked with a bullseye",
+          caption: "Bullseye markers tell the player what's shootable - the visual language for puzzle elements."
+        },
+        {
+          heading: "Onboarding And Level Integration",
+          body: "Outside the systems I helped shape the first island into a coherent thirty-minute prologue - onboarding signs, fall-damage volumes, raft handle snapping, and the spot where the elevator used to push players into the floor. Most of the level integration ran through me too: wiring teammates' actors together so a button actually opens its door."
+        },
+        {
+          image: "assets/images/side-by-tide-process/tutorial-signs.png",
+          alt: "Tutorial scene with a WASD / L-STICK TO MOVE sign next to player character placeholder cylinders",
+          caption: "Tutorial signs for the first island - keeping onboarding readable for the playtest."
+        },
+        {
+          heading: "Visual Identity",
+          body: "Art-wise the whitebox squirrel and platypus carried the project for months. When the polished models dropped in, the whole game suddenly looked like a real product."
+        },
+        {
+          image: "assets/images/side-by-tide-process/whitebox-characters.png",
+          alt: "Whitebox placeholder models for the squirrel and platypus player characters",
+          caption: "Whiteboxed player characters - placeholders carrying the game through most of dev."
+        },
+        {
+          image: "assets/images/side-by-tide-process/polished-characters.png",
+          alt: "Polished stylised squirrel and platypus character models",
+          caption: "Polished pass - the project genuinely cute now."
+        },
+        {
+          heading: "Co-op Physics",
+          body: "Raft towing with handle snapping so both players ride together. MovingActivatable platforms driving doors, water blocks, and disappearing surfaces from the Activatable contract. An Elevator that finally stops pushing players into the floor after the fix sweep. And water puzzles where the platypus swims across and the squirrel rides a platform over the top."
+        },
+        {
+          image: "assets/images/side-by-tide-process/coop-water.png",
+          alt: "Co-op water puzzle with yellow and blue placeholder cylinders on platforms above water",
+          caption: "Co-op water puzzle - the platypus swims, the squirrel rides a platform across."
+        },
+        {
+          heading: "How The Team Worked",
+          body: "Five of us with overlapping roles - gameplay programmers, level design, art, and audio splitting across the team. My work landed mostly on the shared C++ layer so other people's actors had something stable to plug into. I also ran the Git workflow: managing the dev branch, doing the merges into main, and rescuing teammates' progress by hand when conflicts got ugly."
+        },
+        {
+          heading: "Around The Code",
+          body: "Beyond the systems I wrote and maintained four of the team's design documents - including the visual-language doc that pushed us to colour-code puzzle elements with red marks for anything interactable. And I swept up most of the bugs the team didn't have time for during the run-up to playtests."
         }
       ],
       gallery: [
@@ -181,35 +243,100 @@ window.portfolioData = {
       type: "Shipped mobile game",
       featured: true,
       image: "assets/images/prizm-app-store.png",
+      imagePosition: "top",
       alt: "Prizm Puzzle Adventure App Store listing and screenshots",
-      highlight: "Took the lead on programming for a shipped mobile title",
-      summary: "A Unity puzzle game built with a small team and published to the App Store and Google Play. Light-beam reflection and colour-mixing mechanics, custom Unity editor tooling for level design, and the full submission process across both stores.",
+      highlight: "Programmer on a shipped Unity / C# mobile title",
+      summary: "A Unity puzzle game built with a five-person student team and published to the App Store and Google Play. Light-beam reflection and splitter mechanics, a level selector wired for thirty levels, and the full submission process on both stores.",
       tags: ["Unity", "C#", "iOS", "Android"],
-      stats: ["App Store and Google Play", "Programming lead", "Light-beam puzzles"],
+      stats: ["App Store and Google Play", "Unity / C#", "Light-beam puzzles"],
       links: [
         {
           label: "App Store",
           url: "https://apps.apple.com/se/app/prizm-puzzle-adventure/id6749238738?l=en-GB"
         }
       ],
-      sections: [
+      story: [
         {
-          heading: "What I Built",
-          body: "Took the lead on programming for a small student team. My work spanned the gameplay code, the tooling that supported it, and the platform side of shipping.",
-          bullets: [
-            "Light-beam reflection and colour-mixing puzzle mechanics in C#.",
-            "Unity editor tooling so designers could build and iterate on levels without engineering bottlenecks.",
-            "Mobile performance pass across iOS and Android devices.",
-            "Store submissions on both platforms - Google Play first, then the longer iOS review process."
-          ]
+          heading: "What I Worked On",
+          body: "I was one of two programmers on Prizm, a five-person student team building in Unity and C#. I gravitated toward the parts that were either painful to figure out or holding teammates up, and ended up writing a chunk of the puzzle and meta-game systems."
         },
         {
-          heading: "What This Project Shows",
-          body: "End-to-end mobile shipping: not just the gameplay code, but mobile performance, store assets, privacy disclosures, age ratings, and the review processes on both Apple and Google. Plenty of student projects build a working game; fewer go through what it takes to put one in front of real players."
+          image: "assets/images/prizm/prototype-editor.png",
+          alt: "Earliest Prizm prototype open in the Unity editor",
+          caption: "Earliest playable prototype in the editor - a single beam from the top, a target at the bottom."
         },
         {
-          heading: "What I Took Away",
-          body: "Editor tooling pays for itself quickly, even on a small team. A single source of truth between gameplay logic and visual representation prevents an entire class of bug. And the iOS submission process is its own discipline worth knowing before you need it."
+          heading: "The Beam",
+          body: "Light-beam reflection was the first real system to come together. Raycasting from a LightSource, drawing the path with a LineRenderer, and resolving hits against goal, wall, and stop-line tags so the puzzle actually scores correctly."
+        },
+        {
+          image: "assets/images/prizm/drawbeam-code.png",
+          alt: "DrawBeam C# function using Physics2D.Raycast",
+          caption: "DrawBeam - the raycasting routine the whole puzzle runs on."
+        },
+        {
+          image: "assets/images/prizm/dashed-renderer.png",
+          alt: "Dashed line renderer drawing reflected beams in the Unity editor",
+          caption: "Dashed line renderer landing in the editor."
+        },
+        {
+          heading: "Art And Levels",
+          body: "As the gameplay locked in, the visual language landed too - gem sprites for targets and sources, a prism at the bottom of the screen, dashed beams between them. Levels started filling out."
+        },
+        {
+          image: "assets/images/prizm/early-art.png",
+          alt: "Early art pass with a single gem dropping a dashed beam onto the prism",
+          caption: "First art pass: gem to prism with a dashed beam."
+        },
+        {
+          image: "assets/images/prizm/gem-sprites.png",
+          alt: "Four colour-gem sprites arranged on a dark level",
+          caption: "Fresh gem sprites dropped into the project."
+        },
+        {
+          image: "assets/images/prizm/early-level.png",
+          alt: "Mid-development level with four colour gems and a Launch button",
+          caption: "An early level layout with the four colour gems."
+        },
+        {
+          heading: "Splitter Mechanic",
+          body: "The one that took a proper rewrite of the earlier reflection logic. When the beam hits a splitter, the original projectile keeps going and a second one spawns reflected off a predefined side-point - and the whole pipeline had to handle that cleanly without breaking the existing tags and bounce counts."
+        },
+        {
+          image: "assets/images/prizm/splitter-mechanic.png",
+          alt: "Splitter mechanic in action with the beam splitting and reflecting through multiple gems",
+          caption: "Splitter mechanic in action - the beam splits and reflects from a predefined side point."
+        },
+        {
+          heading: "Level Selector And Victory Flow",
+          body: "I wired the level selector for up to thirty slots so content could be dropped straight in, and built the victory screen with the animated star system tied to the level result."
+        },
+        {
+          image: "assets/images/prizm/level-selector.png",
+          alt: "Level selector grid with thirty numbered level tiles",
+          caption: "Our level selector, wired for up to thirty levels."
+        },
+        {
+          image: "assets/images/prizm/victory-screen.png",
+          alt: "Victory screen with three earned-star slots and Home, Restart, and Next Level buttons",
+          caption: "Our victory screen with the animated star system."
+        },
+        {
+          heading: "Around The Code",
+          body: "Outside the systems I set up the team's Git workflow at the start of the project - branches, merges, and unblocking teammates who were nervous about touching it - and ran bugfix passes across the codebase to keep the build stable as it grew."
+        },
+        {
+          heading: "How The Team Worked",
+          body: "Five of us: an artist, two programmers, and two people splitting sound and mechanic work. No formal titles - what mattered was who picked up the hard problems. I took the splitter, the level selector, the Git workflow, and a lot of the cross-team bugfixes, and sat down with teammates when their own mechanics weren't quite landing."
+        },
+        {
+          heading: "Shipping It",
+          body: "Once the game played, I drove most of the rest - mobile performance pass, store assets, privacy and age-rating paperwork, then Google Play and the longer iOS review. Going through that end-to-end is the part most student projects skip."
+        },
+        {
+          image: "assets/images/prizm/final-build.png",
+          alt: "Polished Prizm build with multiple gems and a multi-bounce light beam",
+          caption: "A later build - multi-bounce beam navigating the puzzle."
         }
       ]
     },

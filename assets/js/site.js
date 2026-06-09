@@ -93,8 +93,8 @@
 
     return `
       <article class="project-card">
-        <a class="project-card__media ${mediaClass(project)}" href="${projectUrl(project)}" aria-label="Read the ${escapeHtml(project.title)} case study">
-          <img src="${pathTo(project.image)}" alt="${escapeHtml(project.alt)}" decoding="async">
+        <a class="project-card__media ${mediaClass(project)}" href="${projectUrl(project)}" aria-label="Read more about ${escapeHtml(project.title)}">
+          <img src="${pathTo(project.image)}" alt="${escapeHtml(project.alt)}" decoding="async"${project.imagePosition ? ` style="object-position: ${escapeHtml(project.imagePosition)}"` : ""}>
         </a>
         <div class="project-card__body">
           <div>
@@ -107,7 +107,7 @@
             ${project.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
           </div>
           <div class="action-row">
-            <a class="button" href="${projectUrl(project)}">Case Study</a>
+            <a class="button" href="${projectUrl(project)}">Read more</a>
             ${links}
           </div>
         </div>
@@ -159,7 +159,7 @@
           <div>
             <p class="eyebrow">Availability and contact</p>
             <h2>Get In Touch</h2>
-            <p>Looking for programming roles with Stockholm studios. Happy hybrid or onsite.</p>
+            <p>Looking for programming roles with Stockholm studios.</p>
             <div class="contact-list">
               <span><strong>Location:</strong> ${escapeHtml(profile.location)}.</span>
               <span><strong>Availability:</strong> ${escapeHtml(profile.availability)}.</span>
@@ -225,13 +225,92 @@
       `
       : "";
 
+    const processStrip = project.process && project.process.length
+      ? `
+        <section class="band band--muted">
+          <div class="shell">
+            <div class="section-head">
+              <p class="eyebrow">Behind the build</p>
+              <h2>Process</h2>
+            </div>
+            <div class="process-stack">
+              ${project.process.map((item) => `
+                <figure class="process-stack__item">
+                  <div class="process-stack__media">
+                    <img src="${pathTo(item.image)}" alt="${escapeHtml(item.alt)}" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption class="process-stack__caption">${escapeHtml(item.caption)}</figcaption>
+                </figure>
+              `).join("")}
+            </div>
+          </div>
+        </section>
+      `
+      : "";
+
+    const renderStoryItem = (item) => {
+      if (item.image) {
+        return `
+          <figure class="story-stack__item story-stack__item--media">
+            <div class="story-stack__media">
+              <img src="${pathTo(item.image)}" alt="${escapeHtml(item.alt || '')}" loading="lazy" decoding="async">
+            </div>
+            ${item.caption ? `<figcaption class="story-stack__caption">${escapeHtml(item.caption)}</figcaption>` : ""}
+          </figure>
+        `;
+      }
+      return `
+        <div class="story-stack__item story-stack__item--text">
+          ${item.heading ? `<h2 class="story-stack__heading">${escapeHtml(item.heading)}</h2>` : ""}
+          ${item.body ? `<p class="story-stack__body">${escapeHtml(item.body)}</p>` : ""}
+          ${item.bullets ? `
+            <ul class="story-stack__bullets">
+              ${item.bullets.map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join("")}
+            </ul>
+          ` : ""}
+        </div>
+      `;
+    };
+
+    const storyStack = project.story && project.story.length
+      ? `
+        <section class="band band--muted">
+          <div class="shell">
+            <div class="story-stack">
+              ${project.story.map(renderStoryItem).join("")}
+            </div>
+          </div>
+        </section>
+      `
+      : "";
+
+    const sectionsBlock = project.sections && project.sections.length
+      ? `
+        <section class="band">
+          <div class="shell project-detail-grid">
+            ${project.sections.map((section) => `
+              <article class="detail-section">
+                <h2>${escapeHtml(section.heading)}</h2>
+                <p>${escapeHtml(section.body)}</p>
+                ${section.bullets ? `
+                  <ul class="detail-list">
+                    ${section.bullets.map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join("")}
+                  </ul>
+                ` : ""}
+              </article>
+            `).join("")}
+          </div>
+        </section>
+      `
+      : "";
+
     host.innerHTML = `
       <section class="project-detail-hero band">
         <div class="shell">
           <a class="back-link" href="${pathTo("projects/index.html")}">Back to all projects</a>
           <div class="project-detail-hero__grid">
             <div class="project-detail-hero__media ${mediaClass(project)}">
-              <img src="${pathTo(project.image)}" alt="${escapeHtml(project.alt)}" loading="eager" decoding="async">
+              <img src="${pathTo(project.image)}" alt="${escapeHtml(project.alt)}" loading="eager" decoding="async"${project.imagePosition ? ` style="object-position: ${escapeHtml(project.imagePosition)}"` : ""}>
             </div>
             <div class="project-detail">
               <p class="eyebrow">${escapeHtml(project.type)}</p>
@@ -251,23 +330,29 @@
           </div>
         </div>
       </section>
-      <section class="band">
-        <div class="shell project-detail-grid">
-          ${project.sections.map((section) => `
-            <article class="detail-section">
-              <h2>${escapeHtml(section.heading)}</h2>
-              <p>${escapeHtml(section.body)}</p>
-              ${section.bullets ? `
-                <ul class="detail-list">
-                  ${section.bullets.map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join("")}
-                </ul>
-              ` : ""}
-            </article>
-          `).join("")}
-        </div>
-      </section>
+      ${sectionsBlock}
+      ${storyStack}
+      ${processStrip}
       ${gallery}
     `;
+  }
+
+  function initProcessReveal() {
+    const items = document.querySelectorAll(".process-stack__item, .story-stack__item");
+    if (!items.length) return;
+    if (!("IntersectionObserver" in window)) {
+      items.forEach((item) => item.classList.add("is-visible"));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+    items.forEach((item) => observer.observe(item));
   }
 
   renderHeader();
@@ -277,4 +362,5 @@
   renderInfoGrid("[data-skill-grid]", data.skills);
   renderContact();
   renderProjectDetail();
+  initProcessReveal();
 }());
